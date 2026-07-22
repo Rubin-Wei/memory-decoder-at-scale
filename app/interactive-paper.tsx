@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type CSSProperties, type KeyboardEvent } from "react";
+import { ChartNoAxesCombined, Dna, Globe2, Scale } from "lucide-react";
 
 const tocItems = [
   { id: "overview", number: "00", label: "Overview" },
@@ -51,8 +52,8 @@ export function SectionToc() {
 const memories = [
   {
     id: "general",
+    icon: Globe2,
     label: "General",
-    short: "GEN",
     corpus: "Pile general memory",
     size: "6.9B parameters",
     pairing: "Pythia-410M + memory",
@@ -65,8 +66,8 @@ const memories = [
   },
   {
     id: "biology",
+    icon: Dna,
     label: "Biology",
-    short: "BIO",
     corpus: "BioInst memory",
     size: "1.7B parameters",
     pairing: "Qwen3-14B + memory",
@@ -79,8 +80,8 @@ const memories = [
   },
   {
     id: "law",
+    icon: Scale,
     label: "Law",
-    short: "LAW",
     corpus: "DISC-Law memory",
     size: "1.7B parameters",
     pairing: "Qwen3-14B + memory",
@@ -93,8 +94,8 @@ const memories = [
   },
   {
     id: "finance",
+    icon: ChartNoAxesCombined,
     label: "Finance",
-    short: "FIN",
     corpus: "FinTrain memory",
     size: "1.7B parameters",
     pairing: "Qwen3-14B + memory",
@@ -129,6 +130,7 @@ export function MemoryWheel() {
   const [selected, setSelected] = useState(0);
   const [rotation, setRotation] = useState(0);
   const memory = memories[selected];
+  const ActiveIcon = memory.icon;
 
   function chooseMemory(index: number) {
     if (index === selected) return;
@@ -187,6 +189,7 @@ export function MemoryWheel() {
             <div className="memory-wheel">
               <div className="wheel-track" style={{ transform: `rotate(${rotation}deg)` }}>
                 {memories.map((item, index) => {
+                  const Icon = item.icon;
                   const nodeAngle = 180 + index * 90;
                   const nodeStyle = {
                     "--node-color": item.color,
@@ -206,7 +209,7 @@ export function MemoryWheel() {
                       onClick={() => chooseMemory(index)}
                     >
                       <span className="wheel-node-label" style={labelStyle}>
-                        <small>{item.short}</small>
+                        <Icon className="wheel-node-icon" aria-hidden="true" strokeWidth={1.8} />
                         <strong>{item.label}</strong>
                       </span>
                     </button>
@@ -215,6 +218,7 @@ export function MemoryWheel() {
               </div>
 
               <div className="wheel-center" style={{ "--active-accent": memory.accent } as CSSProperties}>
+                <ActiveIcon className="wheel-center-icon" aria-hidden="true" strokeWidth={1.7} />
                 <small>ACTIVE MEMORY</small>
                 <strong>{memory.label}</strong>
                 <span>{memory.size}</span>

@@ -63,10 +63,15 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /wheel-track/);
   assert.match(interactive, /Pile general memory/);
   assert.match(interactive, /IntersectionObserver/);
+  assert.match(interactive, /Globe2/);
+  assert.match(interactive, /Dna/);
+  assert.match(interactive, /Scale/);
+  assert.match(interactive, /ChartNoAxesCombined/);
   assert.match(interactive, /ArrowLeft/);
   assert.match(interactive, /useState/);
   assert.match(layout, /Memory Decoder at Scale/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  assert.match(packageJson, /lucide-react/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton|vinext|wrangler/);
 
   await Promise.all([
