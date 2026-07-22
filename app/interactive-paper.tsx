@@ -9,7 +9,7 @@ const tocItems = [
   { id: "swap", number: "02", label: "Swap Memory" },
   { id: "architecture", number: "03", label: "Architecture" },
   { id: "construction", number: "04", label: "Data Construction" },
-  { id: "figure3", number: "05", label: "The Main Result" },
+  { id: "figure3", number: "05", label: "Scale Memory" },
   { id: "results", number: "06", label: "More Results" },
   { id: "resources", number: "07", label: "Explore" },
 ];

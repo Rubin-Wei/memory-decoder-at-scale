@@ -8,13 +8,13 @@ function asset(path: string) {
 }
 
 const authors = [
-  "Rubin Wei",
-  "Jiaqi Cao",
-  "Jiarui Wang",
-  "Junming Zhang",
-  "Qipeng Guo",
-  "Bowen Zhou",
-  "Zhouhan Lin",
+  { name: "Rubin Wei", affiliations: "1,2" },
+  { name: "Jiaqi Cao", affiliations: "1" },
+  { name: "Jiarui Wang", affiliations: "1,2" },
+  { name: "Junming Zhang", affiliations: "1" },
+  { name: "Qipeng Guo", affiliations: "2" },
+  { name: "Bowen Zhou", affiliations: "2,3" },
+  { name: "Zhouhan Lin", affiliations: "1,2", corresponding: true },
 ];
 
 function Arrow() {
@@ -27,11 +27,11 @@ export default function Home() {
       <nav className="site-nav" aria-label="Primary navigation">
         <a className="brand" href="#overview" aria-label="Memory Decoder at Scale">
           <span className="brand-mark">M</span>
-          <span>Memory Decoder</span>
+          <span>Memory Decoder at Scale</span>
         </a>
         <div className="nav-links">
           <a href="#architecture">Architecture</a>
-          <a href="#figure3">Figure 3</a>
+          <a href="#figure3">Scale Memory</a>
           <a href="#results">Results</a>
           <a className="nav-paper" href={asset("/paper.pdf")}>Paper <Arrow /></a>
         </div>
@@ -42,7 +42,7 @@ export default function Home() {
       <header className="hero" id="overview">
         <div className="hero-copy">
           <p className="eyebrow">A PARAMETRIC LONG-TERM MEMORY PRETRAINED AT SCALE</p>
-          <h1>Memory Decoder<br /><em>at Scale</em></h1>
+          <h1><span className="hero-title-line">Memory Decoder</span><br /><em>at Scale</em></h1>
           <p className="hero-deck">
             Separate reasoning from knowledge. Keep reasoning in a frozen language model,
             pretrain knowledge as a standalone memory, and scale either component independently.
@@ -55,18 +55,24 @@ export default function Home() {
           </div>
 
           <p className="authors">
-            {authors.map((author, index) => (
-              <span key={author}>{author}{index === authors.length - 1 ? "‡" : ""}</span>
+            {authors.map((author) => (
+              <span key={author.name}>
+                {author.name}<sup>{author.affiliations}{author.corresponding ? "‡" : ""}</sup>
+              </span>
             ))}
           </p>
-          <p className="affiliations">LUMIA Lab · Shanghai Jiao Tong University · Shanghai AI Laboratory · Tsinghua University</p>
+          <div className="affiliations">
+            <span><sup>1</sup>LUMIA Lab, School of Artificial Intelligence, Shanghai Jiao Tong University</span>
+            <span><sup>2</sup>Shanghai Artificial Intelligence Laboratory</span>
+            <span><sup>3</sup>Electronic Engineering, Tsinghua University</span>
+          </div>
         </div>
 
         <div className="hero-idea" aria-label="Core architecture">
           <div className="hero-module base-module">
             <small>FROZEN BASE MODEL</small>
             <strong>Reasoning</strong>
-            <span>language modeling &amp; computation</span>
+            <span>language modeling &amp; reasoning</span>
           </div>
           <div className="parallel-mark" aria-hidden="true"><i /><b>+</b><i /></div>
           <div className="hero-module memory-module">
@@ -88,10 +94,10 @@ export default function Home() {
           </p>
         </div>
         <div className="study-stats" aria-label="Study scale">
-          <article><strong>207B</strong><span>corpus tokens indexed</span></article>
           <article><strong>300B</strong><span>memory training tokens</span></article>
           <article><strong>6.9B</strong><span>largest memory</span></article>
           <article><strong>18</strong><span>general benchmarks</span></article>
+          <article><strong>3</strong><span>domain memories</span></article>
         </div>
       </section>
 
@@ -101,7 +107,7 @@ export default function Home() {
         <div className="section-label">03 · ARCHITECTURE</div>
         <div className="section-heading compact-heading">
           <h2 id="architecture-title">Two objectives.<br /><em>One prediction.</em></h2>
-          <p>The base model learns to reason; the memory learns retrieval-shaped corpus knowledge. At inference, both process the same context in parallel.</p>
+          <p>The base model learns language modeling and reasoning; the memory distills retrieval-induced next-token distributions into parametric knowledge. At inference, both process the same context in parallel.</p>
         </div>
 
         <figure className="paper-feature architecture-figure">
@@ -133,7 +139,7 @@ export default function Home() {
           <div className="section-label">04 · DATA CONSTRUCTION</div>
           <div className="section-heading construction-heading">
             <h2 id="construction-title">Turn retrieval into<br /><em>pretraining targets.</em></h2>
-            <p>A naive pipeline requires every corpus position to search an index built from every other position. Compression and centroid-range sharding make this practical at 207B-token scale.</p>
+            <p>At pretraining scale, a corpus with <i>N</i> tokens yields <i>N</i> keys and <i>N</i> training queries, creating a joint indexing-and-search bottleneck. Compression, centroid-range sharding, and parallel GPU search enable memory pretraining over 300B training tokens.</p>
           </div>
 
           <div className="construction-steps" aria-label="Retrieval target construction steps">
@@ -157,10 +163,10 @@ export default function Home() {
       </section>
 
       <section className="figure3-section section-shell" id="figure3" aria-labelledby="figure3-title">
-        <div className="section-label">05 · THE MAIN RESULT</div>
+        <div className="section-label">05 · SCALE MEMORY</div>
         <div className="section-heading figure3-heading">
-          <h2 id="figure3-title">Scale knowledge,<br /><em>not reasoning.</em></h2>
-          <p>Figure 3 compares frozen backbones with Base + Memory systems under matched training budgets. The memory allocation consistently shifts the efficiency frontier upward.</p>
+          <h2 id="figure3-title">Scale memory,<br /><em>not reasoning.</em></h2>
+          <p>Our results show that a small frozen base model paired with a large memory offers a clear performance–efficiency advantage. Under matched training budgets, allocating capacity to memory consistently shifts the scaling frontier upward.</p>
         </div>
 
         <div className="figure3-layout">
@@ -206,14 +212,11 @@ export default function Home() {
 
       <section className="resources section-shell" id="resources" aria-labelledby="resources-title">
         <div className="section-label">07 · EXPLORE</div>
-        <div className="section-heading compact-heading">
-          <h2 id="resources-title">Read, reproduce,<br />and reuse.</h2>
-          <p>The manuscript, implementation, and released memory checkpoints.</p>
-        </div>
-        <div className="resource-links">
-          <a href={asset("/paper.pdf")}><span>Paper</span><strong>Read the manuscript</strong><Arrow /></a>
-          <a href="https://github.com/LUMIA-Group/MemoryPretrain"><span>GitHub</span><strong>Browse the code</strong><Arrow /></a>
-          <a href="https://huggingface.co/collections/Rubin-Wei/memorypretrain"><span>Models</span><strong>Use the memories</strong><Arrow /></a>
+        <h2 id="resources-title" className="visually-hidden">Paper, code, and models</h2>
+        <div className="resource-links simple-resource-links">
+          <a href={asset("/paper.pdf")}><strong>Paper</strong><Arrow /></a>
+          <a href="https://github.com/LUMIA-Group/MemoryPretrain"><strong>Code</strong><Arrow /></a>
+          <a href="https://huggingface.co/collections/Rubin-Wei/memorypretrain"><strong>Models</strong><Arrow /></a>
         </div>
       </section>
 

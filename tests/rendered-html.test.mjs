@@ -9,8 +9,9 @@ test("exports the complete paper site for GitHub Pages", async () => {
   const html = await readFile(new URL("out/index.html", projectRoot), "utf8");
 
   assert.match(html, /<title>Memory Decoder at Scale<\/title>/i);
-  assert.match(html, /Memory Decoder/);
-  assert.match(html, /207B/);
+  assert.match(html, /Memory Decoder at Scale/);
+  assert.match(html, /300B/);
+  assert.doesNotMatch(html, /207B/);
   assert.match(html, /39%/);
   assert.match(html, /A wheel of memories/);
   assert.match(html, /Two base settings/);
@@ -20,7 +21,8 @@ test("exports the complete paper site for GitHub Pages", async () => {
   assert.match(html, /Two objectives/);
   assert.match(html, /DATA CONSTRUCTION/);
   assert.match(html, /FIGURE 3/);
-  assert.match(html, /Scale knowledge/);
+  assert.match(html, /Scale memory/);
+  assert.match(html, /small frozen base model paired with a large memory/i);
   assert.match(html, /Page contents/);
   assert.match(html, /General memory/);
   assert.match(html, /href="\/memory-decoder-at-scale\/paper\.pdf"/);
@@ -70,7 +72,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /The Idea/);
   assert.match(interactive, /Swap Memory/);
   assert.match(interactive, /Data Construction/);
-  assert.match(interactive, /The Main Result/);
+  assert.match(interactive, /Scale Memory/);
   assert.match(interactive, /Globe2/);
   assert.match(interactive, /Dna/);
   assert.match(interactive, /Scale/);
