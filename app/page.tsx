@@ -42,7 +42,7 @@ export default function Home() {
 
       <header className="hero" id="overview">
         <div className="hero-copy">
-          <p className="eyebrow">A PARAMETRIC LONG-TERM MEMORY PRETRAINED AT SCALE</p>
+          <p className="eyebrow">A Parametric Long-Term Memory Pretrained at Scale</p>
           <h1><span className="hero-title-line">Memory Decoder</span><br /><em>at Scale</em></h1>
           <p className="hero-deck">
             Separate reasoning from knowledge. Keep reasoning in a frozen language model,
@@ -50,9 +50,9 @@ export default function Home() {
           </p>
 
           <div className="hero-actions">
-            <a className="button primary-button" href={asset("/paper.pdf")}>Read the paper <Arrow /></a>
+            <a className="button primary-button" href={asset("/paper.pdf")}>Read the Paper <Arrow /></a>
             <a className="button quiet-button" href="https://github.com/LUMIA-Group/MemoryPretrain">GitHub <Arrow /></a>
-            <a className="text-link" href="https://huggingface.co/collections/Rubin-Wei/memorypretrain">Hugging Face <Arrow /></a>
+            <a className="button quiet-button" href="https://huggingface.co/collections/Rubin-Wei/memorypretrain">Hugging Face <Arrow /></a>
           </div>
 
           <p className="authors">

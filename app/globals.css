@@ -294,6 +294,10 @@ main {
   margin-top: 32px;
 }
 
+.hero-actions .button {
+  width: 160px;
+}
+
 .button {
   display: inline-flex;
   min-height: 46px;
@@ -323,17 +327,6 @@ main {
 .quiet-button:focus-visible {
   background: var(--blue-soft);
   border-color: #b9cbea;
-}
-
-.text-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 3px;
-  color: var(--blue-dark);
-  font-size: 12px;
-  font-weight: 700;
-  border-bottom: 1px solid #afc2df;
 }
 
 .authors {
@@ -2034,8 +2027,8 @@ footer > a:last-child {
     flex-direction: column;
   }
 
-  .text-link {
-    width: fit-content;
+  .hero-actions .button {
+    width: 100%;
   }
 
   .section-shell,
