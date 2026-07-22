@@ -1,168 +1,206 @@
 "use client";
 
-import { useState } from "react";
-
-const generalResults = [
-  { backbone: "Pythia 1.4B", base: 31.03, memory: 32.64, gain: 1.61 },
-  { backbone: "Pythia 2.8B", base: 32.15, memory: 33.73, gain: 1.58 },
-  { backbone: "Pythia 6.9B", base: 34.44, memory: 35.92, gain: 1.48 },
-];
-
-const domainResults = [
-  { backbone: "Qwen3 0.6B", base: 15.65, memory: 25.53, gain: 9.88 },
-  { backbone: "Qwen3 1.7B", base: 19.84, memory: 29.48, gain: 9.64 },
-  { backbone: "Qwen3 4B", base: 23.31, memory: 33.3, gain: 10.0 },
-  { backbone: "Qwen3 8B", base: 27.0, memory: 36.09, gain: 9.09 },
-  { backbone: "Qwen3 14B", base: 27.9, memory: 37.89, gain: 9.99 },
-];
+import { useState, type CSSProperties, type KeyboardEvent } from "react";
 
 const memories = [
   {
     id: "biology",
     label: "Biology",
+    short: "BIO",
     corpus: "BioInst memory",
+    benchmark: "BioInst",
     score: "21.97",
     gain: "+17.96",
-    benchmark: "BioInst",
-    note: "The largest domain gain on Qwen3-14B, from a memory specialized on biology instructions.",
+    color: "#dff3ec",
+    accent: "#3f8d79",
+    description: "Specialized on biology instructions and factual relations.",
   },
   {
     id: "law",
     label: "Law",
+    short: "LAW",
     corpus: "DISC-Law memory",
+    benchmark: "LawBench",
     score: "44.42",
     gain: "+8.97",
-    benchmark: "LawBench",
-    note: "Exchange only the memory module to move the same frozen backbone into legal evaluation.",
+    color: "#e7efff",
+    accent: "#5279b8",
+    description: "Swap in legal knowledge while the reasoning backbone stays frozen.",
   },
   {
     id: "finance",
     label: "Finance",
+    short: "FIN",
     corpus: "FinTrain memory",
+    benchmark: "FinEval",
     score: "47.29",
     gain: "+3.04",
-    benchmark: "FinEval",
-    note: "A finance-specialized memory raises the score without modifying the reasoning backbone.",
+    color: "#fff0df",
+    accent: "#bf7846",
+    description: "A finance-specialized memory for terminology and domain facts.",
   },
 ];
+
+const generalResults = [
+  { model: "Pythia 1.4B", base: 31.03, memory: 32.64, gain: 1.61 },
+  { model: "Pythia 2.8B", base: 32.15, memory: 33.73, gain: 1.58 },
+  { model: "Pythia 6.9B", base: 34.44, memory: 35.92, gain: 1.48 },
+];
+
+const domainResults = [
+  { model: "Qwen3 0.6B", base: 15.65, memory: 25.53, gain: 9.88 },
+  { model: "Qwen3 1.7B", base: 19.84, memory: 29.48, gain: 9.64 },
+  { model: "Qwen3 4B", base: 23.31, memory: 33.3, gain: 10.0 },
+  { model: "Qwen3 8B", base: 27.0, memory: 36.09, gain: 9.09 },
+  { model: "Qwen3 14B", base: 27.9, memory: 37.89, gain: 9.99 },
+];
+
+function nextIndex(index: number, direction: number) {
+  return (index + direction + memories.length) % memories.length;
+}
+
+export function MemoryWheel() {
+  const [selected, setSelected] = useState(0);
+  const [rotation, setRotation] = useState(0);
+  const memory = memories[selected];
+
+  function chooseMemory(index: number) {
+    if (index === selected) return;
+    let delta = index - selected;
+    if (delta > memories.length / 2) delta -= memories.length;
+    if (delta < -memories.length / 2) delta += memories.length;
+    setRotation((current) => current - delta * 120);
+    setSelected(index);
+  }
+
+  function rotate(direction: number) {
+    chooseMemory(nextIndex(selected, direction));
+  }
+
+  function handleKey(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      rotate(-1);
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      rotate(1);
+    }
+  }
+
+  return (
+    <section className="swap-section" id="swap" aria-labelledby="swap-title">
+      <div className="section-shell">
+        <div className="section-label">02 · SWAP MEMORY</div>
+        <div className="section-heading swap-heading">
+          <h2 id="swap-title">One base model.<br /><em>A wheel of memories.</em></h2>
+          <p>Rotate the wheel to change the knowledge module. The frozen Qwen3-14B backbone remains untouched.</p>
+        </div>
+
+        <div
+          className="memory-stage"
+          tabIndex={0}
+          onKeyDown={handleKey}
+          aria-label="Interactive memory wheel. Use left and right arrow keys to change memory."
+        >
+          <article className="fixed-base">
+            <span>FIXED</span>
+            <small>BASE MODEL</small>
+            <strong>Qwen3-14B</strong>
+            <p>language modeling<br />&amp; reasoning</p>
+            <div><i /> frozen parameters</div>
+          </article>
+
+          <div className="stage-connector" aria-hidden="true">
+            <span>parallel</span><i /><b>+</b>
+          </div>
+
+          <div className="wheel-panel">
+            <div className="wheel-pointer" aria-hidden="true">SELECTED</div>
+            <div className="memory-wheel">
+              <div className="wheel-track" style={{ transform: `rotate(${rotation}deg)` }}>
+                {memories.map((item, index) => {
+                  const nodeAngle = 180 + index * 120;
+                  const nodeStyle = {
+                    "--node-color": item.color,
+                    "--node-accent": item.accent,
+                    "--node-angle": `${nodeAngle}deg`,
+                    "--node-counter-angle": `${-nodeAngle}deg`,
+                  } as CSSProperties;
+                  const labelStyle = { transform: `rotate(${-rotation}deg)` };
+
+                  return (
+                    <button
+                      type="button"
+                      className={`wheel-node ${index === selected ? "selected" : ""}`}
+                      style={nodeStyle}
+                      key={item.id}
+                      aria-pressed={index === selected}
+                      onClick={() => chooseMemory(index)}
+                    >
+                      <span className="wheel-node-label" style={labelStyle}>
+                        <small>{item.short}</small>
+                        <strong>{item.label}</strong>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="wheel-center" style={{ "--active-accent": memory.accent } as CSSProperties}>
+                <small>ACTIVE MEMORY</small>
+                <strong>{memory.label}</strong>
+                <span>1.7B parameters</span>
+              </div>
+            </div>
+
+            <div className="wheel-controls">
+              <button type="button" onClick={() => rotate(-1)} aria-label="Previous memory">←</button>
+              <span>{selected + 1} / {memories.length}</span>
+              <button type="button" onClick={() => rotate(1)} aria-label="Next memory">→</button>
+            </div>
+          </div>
+        </div>
+
+        <div className="memory-readout" key={memory.id} style={{ "--active-accent": memory.accent } as CSSProperties}>
+          <div><small>ATTACHED MODULE</small><strong>{memory.corpus}</strong><span>{memory.description}</span></div>
+          <i aria-hidden="true">→</i>
+          <div className="readout-score"><small>{memory.benchmark}</small><strong>{memory.score}</strong><b>{memory.gain}</b></div>
+        </div>
+        <p className="interaction-hint">Click a memory, use the arrows, or press ← / → on the wheel.</p>
+      </div>
+    </section>
+  );
+}
 
 type ResultView = "general" | "domain";
 
 export function ResultsExplorer() {
   const [view, setView] = useState<ResultView>("general");
-  const [selected, setSelected] = useState(0);
-  const results = view === "general" ? generalResults : domainResults;
-  const current = results[Math.min(selected, results.length - 1)];
+  const rows = view === "general" ? generalResults : domainResults;
   const ceiling = 40;
-
-  function chooseView(next: ResultView) {
-    setView(next);
-    setSelected(0);
-  }
 
   return (
     <div className="results-explorer">
-      <div className="explorer-heading">
-        <div>
-          <span>INTERACTIVE RESULT EXPLORER</span>
-          <h3>See what the memory adds.</h3>
-        </div>
-        <div className="explorer-tabs" role="tablist" aria-label="Result family">
-          <button type="button" role="tab" aria-selected={view === "general"} onClick={() => chooseView("general")}>General memory</button>
-          <button type="button" role="tab" aria-selected={view === "domain"} onClick={() => chooseView("domain")}>Domain memory</button>
-        </div>
+      <div className="result-tabs" role="tablist" aria-label="Result family">
+        <button type="button" role="tab" aria-selected={view === "general"} onClick={() => setView("general")}>General memory</button>
+        <button type="button" role="tab" aria-selected={view === "domain"} onClick={() => setView("domain")}>Domain memory</button>
       </div>
 
-      <div className="model-picker" aria-label="Choose a frozen backbone">
-        {results.map((row, index) => (
-          <button
-            type="button"
-            className={index === selected ? "active" : ""}
-            key={row.backbone}
-            aria-pressed={index === selected}
-            onClick={() => setSelected(index)}
-          >
-            <span>{row.backbone}</span>
-            <strong>+{row.gain.toFixed(2)}</strong>
-          </button>
+      <div className="chart-key" aria-hidden="true"><span><i /> Frozen base</span><span><i /> Base + memory</span></div>
+      <div className="result-chart" key={view}>
+        {rows.map((row) => (
+          <article className="chart-row" key={row.model} aria-label={`${row.model}, frozen base ${row.base.toFixed(2)}, base plus memory ${row.memory.toFixed(2)}`}>
+            <div className="chart-model"><strong>{row.model}</strong><span>+{row.gain.toFixed(2)}</span></div>
+            <div className="bar-stack">
+              <div className="result-bar base-bar" style={{ width: `${(row.base / ceiling) * 100}%` }}><span>{row.base.toFixed(2)}</span></div>
+              <div className="result-bar memory-bar" style={{ width: `${(row.memory / ceiling) * 100}%` }}><span>{row.memory.toFixed(2)}</span></div>
+            </div>
+          </article>
         ))}
       </div>
-
-      <div className="score-visual" key={`${view}-${current.backbone}`}>
-        <div className="score-context">
-          <span>{view === "general" ? "18-task average" : "3-domain average"}</span>
-          <h4>{current.backbone}</h4>
-          <p>
-            Attach {view === "general" ? "a matched general memory" : "the 1.7B domain memory"} to the frozen backbone.
-          </p>
-          <div className="gain-pill"><strong>+{current.gain.toFixed(2)}</strong><small>absolute gain</small></div>
-        </div>
-
-        <div className="bar-comparison" aria-label={`${current.backbone}: base ${current.base.toFixed(2)}, with memory ${current.memory.toFixed(2)}`}>
-          <div className="bar-row base-row">
-            <div><span>Frozen base</span><strong>{current.base.toFixed(2)}</strong></div>
-            <div className="bar-track"><i style={{ width: `${(current.base / ceiling) * 100}%` }} /></div>
-          </div>
-          <div className="bar-row memory-row">
-            <div><span>Base + memory</span><strong>{current.memory.toFixed(2)}</strong></div>
-            <div className="bar-track"><i style={{ width: `${(current.memory / ceiling) * 100}%` }} /></div>
-          </div>
-          <div className="bar-axis" aria-hidden="true"><span>0</span><span>20</span><span>40</span></div>
-        </div>
-      </div>
-
-      <p className="explorer-hint">Choose a result family and backbone to compare the scores directly.</p>
+      <div className="chart-axis" aria-hidden="true"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
+      <p className="chart-note">{view === "general" ? "Average across 18 general benchmarks with matched-size memory." : "Average across biology, law, and finance with a 1.7B domain memory."}</p>
     </div>
-  );
-}
-
-export function MemoryBankExplorer() {
-  const [selected, setSelected] = useState(0);
-  const memory = memories[selected];
-
-  return (
-    <section className="memory-bank section-shell" aria-labelledby="transfer-title">
-      <div className="memory-bank-heading">
-        <p className="kicker">CLICK TO SWAP THE MEMORY</p>
-        <h2 id="transfer-title">One frozen backbone.<br />A bank of domain memories.</h2>
-        <p>Keep the Qwen3-14B backbone fixed, then change what it remembers by selecting a specialized 1.7B memory.</p>
-      </div>
-
-      <div className="memory-tabs" role="tablist" aria-label="Available domain memories">
-        {memories.map((item, index) => (
-          <button
-            type="button"
-            role="tab"
-            aria-selected={index === selected}
-            key={item.id}
-            onClick={() => setSelected(index)}
-          >
-            <span>0{index + 1}</span>{item.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="memory-architecture" key={memory.id}>
-        <article className="backbone-module">
-          <span>FROZEN BACKBONE</span>
-          <strong>Qwen3-14B</strong>
-          <small>reasoning &amp; language</small>
-        </article>
-        <div className="module-plus" aria-hidden="true">+</div>
-        <article className={`memory-module ${memory.id}`}>
-          <span>SWAPPABLE MEMORY</span>
-          <strong>{memory.corpus}</strong>
-          <small>1.7B parameters</small>
-        </article>
-        <div className="module-arrow" aria-hidden="true">→</div>
-        <article className="memory-outcome">
-          <span>{memory.benchmark}</span>
-          <strong>{memory.score}</strong>
-          <b>{memory.gain}</b>
-        </article>
-      </div>
-
-      <p className="memory-note">{memory.note}</p>
-    </section>
   );
 }
