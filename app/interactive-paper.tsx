@@ -4,14 +4,14 @@ import { useEffect, useState, type CSSProperties, type KeyboardEvent } from "rea
 import { ChartNoAxesCombined, Dna, Globe2, Scale } from "lucide-react";
 
 const tocItems = [
-  { id: "overview", number: "00", label: "Overview" },
-  { id: "idea", number: "01", label: "The idea" },
-  { id: "swap", number: "02", label: "Memory bank" },
-  { id: "architecture", number: "03", label: "Architecture" },
-  { id: "construction", number: "04", label: "Data construction" },
-  { id: "figure3", number: "05", label: "Figure 3" },
-  { id: "results", number: "06", label: "More results" },
-  { id: "resources", number: "07", label: "Resources" },
+  { id: "overview", number: "00", label: "Memory Decoder at Scale" },
+  { id: "idea", number: "01", label: "Knowledge and reasoning do not need to live in the same parameters." },
+  { id: "swap", number: "02", label: "Two base settings. A wheel of memories." },
+  { id: "architecture", number: "03", label: "Two objectives. One prediction." },
+  { id: "construction", number: "04", label: "Turn retrieval into pretraining targets." },
+  { id: "figure3", number: "05", label: "Scale knowledge, not reasoning." },
+  { id: "results", number: "06", label: "The gain persists across settings." },
+  { id: "resources", number: "07", label: "Read, reproduce, and reuse." },
 ];
 
 export function SectionToc() {

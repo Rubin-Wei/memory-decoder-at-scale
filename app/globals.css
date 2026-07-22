@@ -149,7 +149,7 @@ main {
   z-index: 35;
   top: 106px;
   left: 22px;
-  width: 132px;
+  width: 144px;
 }
 
 .page-toc > strong {
@@ -174,7 +174,7 @@ main {
   padding: 6px 8px;
   color: var(--muted);
   border-left: 2px solid var(--line);
-  font-size: 10px;
+  font-size: 9px;
   line-height: 1.2;
   transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
 }
