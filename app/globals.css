@@ -538,6 +538,7 @@ main {
   background: var(--ink);
   border-radius: 22px;
   box-shadow: 0 22px 40px rgba(23, 38, 59, 0.18);
+  animation: reveal 320ms ease both;
 }
 
 .fixed-base > span {

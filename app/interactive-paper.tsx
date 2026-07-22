@@ -54,6 +54,9 @@ const memories = [
     id: "general",
     icon: Globe2,
     label: "General",
+    baseModel: "Pythia-410M",
+    baseBadge: "GENERAL PAIRING",
+    baseScope: "paired with General memory",
     corpus: "Pile general memory",
     size: "6.9B parameters",
     pairing: "Pythia-410M + memory",
@@ -68,6 +71,9 @@ const memories = [
     id: "biology",
     icon: Dna,
     label: "Biology",
+    baseModel: "Qwen3-14B",
+    baseBadge: "SHARED DOMAIN BASE",
+    baseScope: "Biology · Law · Finance",
     corpus: "BioInst memory",
     size: "1.7B parameters",
     pairing: "Qwen3-14B + memory",
@@ -82,6 +88,9 @@ const memories = [
     id: "law",
     icon: Scale,
     label: "Law",
+    baseModel: "Qwen3-14B",
+    baseBadge: "SHARED DOMAIN BASE",
+    baseScope: "Biology · Law · Finance",
     corpus: "DISC-Law memory",
     size: "1.7B parameters",
     pairing: "Qwen3-14B + memory",
@@ -96,6 +105,9 @@ const memories = [
     id: "finance",
     icon: ChartNoAxesCombined,
     label: "Finance",
+    baseModel: "Qwen3-14B",
+    baseBadge: "SHARED DOMAIN BASE",
+    baseScope: "Biology · Law · Finance",
     corpus: "FinTrain memory",
     size: "1.7B parameters",
     pairing: "Qwen3-14B + memory",
@@ -161,8 +173,8 @@ export function MemoryWheel() {
       <div className="section-shell">
         <div className="section-label">02 · SWAP MEMORY</div>
         <div className="section-heading swap-heading">
-          <h2 id="swap-title">One base model.<br /><em>A wheel of memories.</em></h2>
-          <p>Rotate the wheel to change the knowledge module. The frozen Qwen3-14B backbone remains untouched.</p>
+          <h2 id="swap-title">Two base settings.<br /><em>A wheel of memories.</em></h2>
+          <p>General memory pairs with Pythia-410M. Biology, law, and finance memories all share the same frozen Qwen3-14B base.</p>
         </div>
 
         <div
@@ -171,12 +183,12 @@ export function MemoryWheel() {
           onKeyDown={handleKey}
           aria-label="Interactive memory wheel. Use left and right arrow keys to change memory."
         >
-          <article className="fixed-base">
-            <span>FIXED</span>
+          <article className="fixed-base" key={memory.baseModel} aria-live="polite">
+            <span>{memory.baseBadge}</span>
             <small>BASE MODEL</small>
-            <strong>Frozen backbone</strong>
+            <strong>{memory.baseModel}</strong>
             <p>language modeling<br />&amp; reasoning</p>
-            <em className="base-families">Pythia · Qwen3</em>
+            <em className="base-families">{memory.baseScope}</em>
             <div><i /> frozen parameters</div>
           </article>
 
