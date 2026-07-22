@@ -71,22 +71,22 @@ export default function Home() {
 
         <div className="hero-idea" aria-label="Core architecture">
           <div className="hero-module base-module">
-            <small>FROZEN BASE MODEL</small>
+            <small>Frozen Base Model</small>
             <strong>Reasoning</strong>
             <span>language modeling &amp; reasoning</span>
           </div>
           <div className="parallel-mark" aria-hidden="true"><i /><b>+</b><i /></div>
           <div className="hero-module memory-module">
-            <small>SWAPPABLE MEMORY</small>
+            <small>Swappable Memory</small>
             <strong>Knowledge</strong>
             <span>general or domain corpus knowledge</span>
           </div>
-          <div className="distribution-line"><span>run separately</span><i /><span>combine once</span></div>
+          <div className="distribution-line"><span>Run Separately</span><i /><span>Combine Once</span></div>
         </div>
       </header>
 
       <section className="idea-section section-shell" id="idea" aria-labelledby="idea-title">
-        <div className="section-label">01 · THE IDEA</div>
+        <div className="section-label">01 · The Idea</div>
         <div className="idea-copy">
           <h2 id="idea-title">Knowledge and reasoning do not need to live in the same parameters.</h2>
           <p>
@@ -95,24 +95,24 @@ export default function Home() {
           </p>
         </div>
         <div className="study-stats" aria-label="Study scale">
-          <article><strong>300B</strong><span>memory training tokens</span></article>
-          <article><strong>6.9B</strong><span>largest memory</span></article>
-          <article><strong>18</strong><span>general benchmarks</span></article>
-          <article><strong>3</strong><span>domain memories</span></article>
+          <article><strong>300B</strong><span>Memory Training Tokens</span></article>
+          <article><strong>6.9B</strong><span>Largest Memory</span></article>
+          <article><strong>18</strong><span>General Benchmarks</span></article>
+          <article><strong>3</strong><span>Domain Memories</span></article>
         </div>
       </section>
 
       <MemoryWheel />
 
       <section className="architecture-section section-shell" id="architecture" aria-labelledby="architecture-title">
-        <div className="section-label">03 · ARCHITECTURE</div>
+        <div className="section-label">03 · Architecture</div>
         <div className="section-heading compact-heading">
           <h2 id="architecture-title">Two objectives.<br /><em>One prediction.</em></h2>
           <p>The base model learns language modeling and reasoning; the memory distills retrieval-induced next-token distributions into parametric knowledge. At inference, both process the same context in parallel.</p>
         </div>
 
         <figure className="paper-feature architecture-figure">
-          <div className="figure-kicker"><span>FIGURE 1</span><strong>Training and inference architecture</strong></div>
+          <div className="figure-kicker"><span>Figure 1</span><strong>Training and inference architecture</strong></div>
           <Image
             src={asset("/paper/overview.png")}
             alt="The base model is trained for next-token prediction, the parametric memory aligns with a retriever distribution, and their predictions are interpolated at inference."
@@ -123,21 +123,21 @@ export default function Home() {
         </figure>
 
         <div className="architecture-principles">
-          <article><span>θ</span><div><small>REASONING PARAMETERS</small><strong>Frozen base model</strong><p>Standard next-token pretraining supplies language modeling, computation, and reasoning.</p></div></article>
-          <article><span>ψ</span><div><small>KNOWLEDGE PARAMETERS</small><strong>Standalone memory</strong><p>A decoder learns the retrieval-induced distribution while retaining a next-token objective.</p></div></article>
-          <article><span>α</span><div><small>PLUG-AND-PLAY INFERENCE</small><strong>Parallel composition</strong><p>Exchange the active memory, then interpolate two next-token distributions.</p></div></article>
+          <article><span>θ</span><div><small>Reasoning Parameters</small><strong>Frozen base model</strong><p>Standard next-token pretraining supplies language modeling, computation, and reasoning.</p></div></article>
+          <article><span>ψ</span><div><small>Knowledge Parameters</small><strong>Standalone memory</strong><p>A decoder learns the retrieval-induced distribution while retaining a next-token objective.</p></div></article>
+          <article><span>α</span><div><small>Plug-and-Play Inference</small><strong>Parallel composition</strong><p>Exchange the active memory, then interpolate two next-token distributions.</p></div></article>
         </div>
 
         <div className="equation-band" aria-label="Inference interpolation equation">
-          <span>INFERENCE</span>
+          <span>Inference</span>
           <p><i>p</i><sub>final</sub> = (1 − α) <i>p</i><sub>reasoning</sub> + α <i>p</i><sub>knowledge</sub></p>
-          <small>two forward passes · one final distribution</small>
+          <small>Two Forward Passes · One Final Distribution</small>
         </div>
       </section>
 
       <section className="construction-section" id="construction" aria-labelledby="construction-title">
         <div className="section-shell">
-          <div className="section-label">04 · DATA CONSTRUCTION</div>
+          <div className="section-label">04 · Data Construction</div>
           <div className="section-heading construction-heading">
             <h2 id="construction-title">Turn retrieval into<br /><em>pretraining targets.</em></h2>
             <p>At pretraining scale, a corpus with <i>N</i> tokens yields <i>N</i> keys and <i>N</i> training queries, creating a joint indexing-and-search bottleneck. Compression, centroid-range sharding, and parallel GPU search enable memory pretraining over 300B training tokens.</p>
@@ -151,7 +151,7 @@ export default function Home() {
           </div>
 
           <figure className="paper-feature construction-figure">
-            <div className="figure-kicker"><span>FIGURE 2</span><strong>Pretraining-scale retrieval-target construction</strong></div>
+            <div className="figure-kicker"><span>Figure 2</span><strong>Pretraining-scale retrieval-target construction</strong></div>
             <Image
               src={asset("/paper/construction.png")}
               alt="OPQ compression, HNSW and IVF two-level routing, and independent search over centroid-range shards."
@@ -164,7 +164,7 @@ export default function Home() {
       </section>
 
       <section className="figure3-section section-shell" id="figure3" aria-labelledby="figure3-title">
-        <div className="section-label">05 · SCALE MEMORY</div>
+        <div className="section-label">05 · Scale Memory</div>
         <div className="section-heading figure3-heading">
           <h2 id="figure3-title">Scale memory,<br /><em>not reasoning.</em></h2>
           <p>Our results show that a small frozen base model paired with a large memory offers a clear performance–efficiency advantage. Under matched training budgets, allocating capacity to memory consistently shifts the scaling frontier upward.</p>
@@ -172,7 +172,7 @@ export default function Home() {
 
         <div className="figure3-layout">
           <figure className="paper-feature transfer-figure">
-            <div className="figure-kicker"><span>FIGURE 3</span><strong>General memory transfer across backbones</strong></div>
+            <div className="figure-kicker"><span>Figure 3</span><strong>General memory transfer across backbones</strong></div>
             <a href={asset("/paper/transfer.png")} target="_blank" rel="noreferrer" aria-label="Open Figure 3 at full size">
               <Image
                 src={asset("/paper/transfer.png")}
@@ -185,7 +185,7 @@ export default function Home() {
           </figure>
 
           <aside className="figure3-notes" aria-label="Figure 3 takeaways">
-            <div className="main-takeaway"><small>PYTHIA-410M + MEMORY-6.9B</small><strong>35.58</strong><p>beats the frozen Pythia-12B score of 35.38 with <b>39% fewer total parameters</b>.</p></div>
+            <div className="main-takeaway"><small>Pythia-410M + Memory-6.9B</small><strong>35.58</strong><p>beats the frozen Pythia-12B score of 35.38 with <b>39% fewer total parameters</b>.</p></div>
             <article><strong>18 / 18</strong><p>Base + Memory configurations outperform their frozen backbone alone.</p></article>
             <article><strong>34–44%</strong><p>fewer parameters at matched scores along the two scaling curves.</p></article>
             <div className="figure-guide"><span><i /> circle area</span> total parameters<br /><span><i /> split fill</span> base / memory fractions</div>
@@ -195,7 +195,7 @@ export default function Home() {
 
       <section className="results-section" id="results" aria-labelledby="results-title">
         <div className="section-shell">
-          <div className="section-label">06 · MORE RESULTS</div>
+          <div className="section-label">06 · More Results</div>
           <div className="section-heading results-heading">
             <h2 id="results-title">The gain persists<br /><em>across settings.</em></h2>
             <p>Switch between general and domain memory to see how the same knowledge module idea behaves across backbone scales.</p>
@@ -212,7 +212,7 @@ export default function Home() {
       </section>
 
       <section className="resources section-shell" id="resources" aria-labelledby="resources-title">
-        <div className="section-label">07 · EXPLORE</div>
+        <div className="section-label">07 · Explore</div>
         <h2 id="resources-title" className="visually-hidden">Paper, code, and models</h2>
         <div className="resource-links simple-resource-links">
           <a href={asset("/paper.pdf")}><strong>Paper</strong><Arrow /></a>

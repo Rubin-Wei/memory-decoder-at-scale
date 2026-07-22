@@ -37,7 +37,7 @@ export function SectionToc() {
 
   return (
     <aside className="page-toc" aria-label="Page contents">
-      <strong>CONTENTS</strong>
+      <strong>Contents</strong>
       <nav>
         {tocItems.map((item) => (
           <a key={item.id} href={`#${item.id}`} aria-current={active === item.id ? "location" : undefined}>
@@ -55,11 +55,11 @@ const memories = [
     icon: Globe2,
     label: "General",
     baseModel: "Pythia-410M",
-    baseBadge: "GENERAL PAIRING",
-    baseScope: "paired with General memory",
-    corpus: "Pile general memory",
+    baseBadge: "General Pairing",
+    baseScope: "Paired with General Memory",
+    corpus: "Pile General Memory",
     size: "6.9B parameters",
-    pairing: "Pythia-410M + memory",
+    pairing: "Pythia-410M + Memory",
     benchmark: "18-task AVG",
     score: "35.58",
     gain: "+7.30",
@@ -72,11 +72,11 @@ const memories = [
     icon: Dna,
     label: "Biology",
     baseModel: "Qwen3-14B",
-    baseBadge: "SHARED DOMAIN BASE",
+    baseBadge: "Shared Domain Base",
     baseScope: "Biology · Law · Finance",
-    corpus: "BioInst memory",
+    corpus: "BioInst Memory",
     size: "1.7B parameters",
-    pairing: "Qwen3-14B + memory",
+    pairing: "Qwen3-14B + Memory",
     benchmark: "BioInst",
     score: "21.97",
     gain: "+17.96",
@@ -89,11 +89,11 @@ const memories = [
     icon: Scale,
     label: "Law",
     baseModel: "Qwen3-14B",
-    baseBadge: "SHARED DOMAIN BASE",
+    baseBadge: "Shared Domain Base",
     baseScope: "Biology · Law · Finance",
-    corpus: "DISC-Law memory",
+    corpus: "DISC-Law Memory",
     size: "1.7B parameters",
-    pairing: "Qwen3-14B + memory",
+    pairing: "Qwen3-14B + Memory",
     benchmark: "LawBench",
     score: "44.42",
     gain: "+8.97",
@@ -106,11 +106,11 @@ const memories = [
     icon: ChartNoAxesCombined,
     label: "Finance",
     baseModel: "Qwen3-14B",
-    baseBadge: "SHARED DOMAIN BASE",
+    baseBadge: "Shared Domain Base",
     baseScope: "Biology · Law · Finance",
-    corpus: "FinTrain memory",
+    corpus: "FinTrain Memory",
     size: "1.7B parameters",
-    pairing: "Qwen3-14B + memory",
+    pairing: "Qwen3-14B + Memory",
     benchmark: "FinEval",
     score: "47.29",
     gain: "+3.04",
@@ -171,7 +171,7 @@ export function MemoryWheel() {
   return (
     <section className="swap-section" id="swap" aria-labelledby="swap-title">
       <div className="section-shell">
-        <div className="section-label">02 · SWAP MEMORY</div>
+        <div className="section-label">02 · Swap Memory</div>
         <div className="section-heading swap-heading">
           <h2 id="swap-title">Two base settings.<br /><em>A wheel of memories.</em></h2>
           <p>General memory pairs with Pythia-410M. Biology, law, and finance memories all share the same frozen Qwen3-14B base.</p>
@@ -185,19 +185,19 @@ export function MemoryWheel() {
         >
           <article className="fixed-base" key={memory.baseModel} aria-live="polite">
             <span>{memory.baseBadge}</span>
-            <small>BASE MODEL</small>
+            <small>Base Model</small>
             <strong>{memory.baseModel}</strong>
             <p>language modeling<br />&amp; reasoning</p>
             <em className="base-families">{memory.baseScope}</em>
-            <div><i /> frozen parameters</div>
+            <div><i /> Frozen Parameters</div>
           </article>
 
           <div className="stage-connector" aria-hidden="true">
-            <span>parallel</span><i /><b>+</b>
+            <span>Parallel</span><i /><b>+</b>
           </div>
 
           <div className="wheel-panel">
-            <div className="wheel-pointer" aria-hidden="true">SELECTED</div>
+            <div className="wheel-pointer" aria-hidden="true">Selected</div>
             <div className="memory-wheel">
               <div className="wheel-track" style={{ transform: `rotate(${rotation}deg)` }}>
                 {memories.map((item, index) => {
@@ -231,7 +231,7 @@ export function MemoryWheel() {
 
               <div className="wheel-center" style={{ "--active-accent": memory.accent } as CSSProperties}>
                 <ActiveIcon className="wheel-center-icon" aria-hidden="true" strokeWidth={1.7} />
-                <small>ACTIVE MEMORY</small>
+                <small>Active Memory</small>
                 <strong>{memory.label}</strong>
                 <span>{memory.size}</span>
               </div>
@@ -246,7 +246,7 @@ export function MemoryWheel() {
         </div>
 
         <div className="memory-readout" key={memory.id} style={{ "--active-accent": memory.accent } as CSSProperties}>
-          <div><small>ATTACHED KNOWLEDGE MODULE</small><strong>{memory.corpus}</strong><span>{memory.description}</span></div>
+          <div><small>Attached Knowledge Module</small><strong>{memory.corpus}</strong><span>{memory.description}</span></div>
           <i aria-hidden="true">→</i>
           <div className="readout-score"><small>{memory.pairing}</small><span>{memory.benchmark}</span><strong>{memory.score}</strong><b>{memory.gain}</b></div>
         </div>

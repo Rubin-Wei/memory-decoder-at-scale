@@ -19,8 +19,8 @@ test("exports the complete paper site for GitHub Pages", async () => {
   assert.match(html, /Interactive memory wheel/);
   assert.match(html, /General/);
   assert.match(html, /Two objectives/);
-  assert.match(html, /DATA CONSTRUCTION/);
-  assert.match(html, /FIGURE 3/);
+  assert.match(html, /Data Construction/);
+  assert.match(html, /Figure 3/);
   assert.match(html, /Scale memory/);
   assert.match(html, /small frozen base model paired with a large memory/i);
   assert.match(html, /Page contents/);
@@ -65,9 +65,9 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /generalResults/);
   assert.match(interactive, /domainResults/);
   assert.match(interactive, /wheel-track/);
-  assert.match(interactive, /Pile general memory/);
-  assert.match(interactive, /GENERAL PAIRING/);
-  assert.match(interactive, /SHARED DOMAIN BASE/);
+  assert.match(interactive, /Pile General Memory/);
+  assert.match(interactive, /General Pairing/);
+  assert.match(interactive, /Shared Domain Base/);
   assert.match(interactive, /IntersectionObserver/);
   assert.match(interactive, /The Idea/);
   assert.match(interactive, /Swap Memory/);
