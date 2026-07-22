@@ -1,13 +1,75 @@
 "use client";
 
-import { useState, type CSSProperties, type KeyboardEvent } from "react";
+import { useEffect, useState, type CSSProperties, type KeyboardEvent } from "react";
+
+const tocItems = [
+  { id: "overview", number: "00", label: "Overview" },
+  { id: "idea", number: "01", label: "The idea" },
+  { id: "swap", number: "02", label: "Memory bank" },
+  { id: "architecture", number: "03", label: "Architecture" },
+  { id: "construction", number: "04", label: "Data construction" },
+  { id: "figure3", number: "05", label: "Figure 3" },
+  { id: "results", number: "06", label: "More results" },
+  { id: "resources", number: "07", label: "Resources" },
+];
+
+export function SectionToc() {
+  const [active, setActive] = useState("overview");
+
+  useEffect(() => {
+    const sections = tocItems
+      .map((item) => document.getElementById(item.id))
+      .filter((section): section is HTMLElement => section !== null);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.1, 0.25] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <aside className="page-toc" aria-label="Page contents">
+      <strong>CONTENTS</strong>
+      <nav>
+        {tocItems.map((item) => (
+          <a key={item.id} href={`#${item.id}`} aria-current={active === item.id ? "location" : undefined}>
+            <span>{item.number}</span>{item.label}
+          </a>
+        ))}
+      </nav>
+    </aside>
+  );
+}
 
 const memories = [
+  {
+    id: "general",
+    label: "General",
+    short: "GEN",
+    corpus: "Pile general memory",
+    size: "6.9B parameters",
+    pairing: "Pythia-410M + memory",
+    benchmark: "18-task AVG",
+    score: "35.58",
+    gain: "+7.30",
+    color: "#e4edff",
+    accent: "#5279b8",
+    description: "Pretrained on the deduplicated Pile for broad corpus knowledge.",
+  },
   {
     id: "biology",
     label: "Biology",
     short: "BIO",
     corpus: "BioInst memory",
+    size: "1.7B parameters",
+    pairing: "Qwen3-14B + memory",
     benchmark: "BioInst",
     score: "21.97",
     gain: "+17.96",
@@ -20,6 +82,8 @@ const memories = [
     label: "Law",
     short: "LAW",
     corpus: "DISC-Law memory",
+    size: "1.7B parameters",
+    pairing: "Qwen3-14B + memory",
     benchmark: "LawBench",
     score: "44.42",
     gain: "+8.97",
@@ -32,6 +96,8 @@ const memories = [
     label: "Finance",
     short: "FIN",
     corpus: "FinTrain memory",
+    size: "1.7B parameters",
+    pairing: "Qwen3-14B + memory",
     benchmark: "FinEval",
     score: "47.29",
     gain: "+3.04",
@@ -69,7 +135,7 @@ export function MemoryWheel() {
     let delta = index - selected;
     if (delta > memories.length / 2) delta -= memories.length;
     if (delta < -memories.length / 2) delta += memories.length;
-    setRotation((current) => current - delta * 120);
+    setRotation((current) => current - delta * 90);
     setSelected(index);
   }
 
@@ -106,8 +172,9 @@ export function MemoryWheel() {
           <article className="fixed-base">
             <span>FIXED</span>
             <small>BASE MODEL</small>
-            <strong>Qwen3-14B</strong>
+            <strong>Frozen backbone</strong>
             <p>language modeling<br />&amp; reasoning</p>
+            <em className="base-families">Pythia · Qwen3</em>
             <div><i /> frozen parameters</div>
           </article>
 
@@ -120,7 +187,7 @@ export function MemoryWheel() {
             <div className="memory-wheel">
               <div className="wheel-track" style={{ transform: `rotate(${rotation}deg)` }}>
                 {memories.map((item, index) => {
-                  const nodeAngle = 180 + index * 120;
+                  const nodeAngle = 180 + index * 90;
                   const nodeStyle = {
                     "--node-color": item.color,
                     "--node-accent": item.accent,
@@ -150,7 +217,7 @@ export function MemoryWheel() {
               <div className="wheel-center" style={{ "--active-accent": memory.accent } as CSSProperties}>
                 <small>ACTIVE MEMORY</small>
                 <strong>{memory.label}</strong>
-                <span>1.7B parameters</span>
+                <span>{memory.size}</span>
               </div>
             </div>
 
@@ -163,9 +230,9 @@ export function MemoryWheel() {
         </div>
 
         <div className="memory-readout" key={memory.id} style={{ "--active-accent": memory.accent } as CSSProperties}>
-          <div><small>ATTACHED MODULE</small><strong>{memory.corpus}</strong><span>{memory.description}</span></div>
+          <div><small>ATTACHED KNOWLEDGE MODULE</small><strong>{memory.corpus}</strong><span>{memory.description}</span></div>
           <i aria-hidden="true">→</i>
-          <div className="readout-score"><small>{memory.benchmark}</small><strong>{memory.score}</strong><b>{memory.gain}</b></div>
+          <div className="readout-score"><small>{memory.pairing}</small><span>{memory.benchmark}</span><strong>{memory.score}</strong><b>{memory.gain}</b></div>
         </div>
         <p className="interaction-hint">Click a memory, use the arrows, or press ← / → on the wheel.</p>
       </div>

@@ -3,7 +3,7 @@ import "./globals.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const siteUrl = "https://rubin-wei.github.io/memory-decoder-at-scale/";
-const previewImage = `${siteUrl}social-preview.png`;
+const previewImage = `${siteUrl}og.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

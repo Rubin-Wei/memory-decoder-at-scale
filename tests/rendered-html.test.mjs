@@ -14,10 +14,18 @@ test("exports the complete paper site for GitHub Pages", async () => {
   assert.match(html, /39%/);
   assert.match(html, /A wheel of memories/);
   assert.match(html, /Interactive memory wheel/);
+  assert.match(html, /General/);
+  assert.match(html, /Two objectives/);
+  assert.match(html, /DATA CONSTRUCTION/);
+  assert.match(html, /FIGURE 3/);
+  assert.match(html, /Scale knowledge/);
+  assert.match(html, /Page contents/);
   assert.match(html, /General memory/);
   assert.match(html, /href="\/memory-decoder-at-scale\/paper\.pdf"/);
   assert.match(html, /src="\/memory-decoder-at-scale\/paper\/overview\.png"/);
-  assert.match(html, /social-preview\.png/);
+  assert.match(html, /src="\/memory-decoder-at-scale\/paper\/construction\.png"/);
+  assert.match(html, /src="\/memory-decoder-at-scale\/paper\/transfer\.png"/);
+  assert.match(html, /og\.png/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 
@@ -48,10 +56,13 @@ test("keeps interactive source and the paper assets", async () => {
 
   assert.match(page, /ResultsExplorer/);
   assert.match(page, /MemoryWheel/);
+  assert.match(page, /SectionToc/);
   assert.match(page, /NEXT_PUBLIC_BASE_PATH/);
   assert.match(interactive, /generalResults/);
   assert.match(interactive, /domainResults/);
   assert.match(interactive, /wheel-track/);
+  assert.match(interactive, /Pile general memory/);
+  assert.match(interactive, /IntersectionObserver/);
   assert.match(interactive, /ArrowLeft/);
   assert.match(interactive, /useState/);
   assert.match(layout, /Memory Decoder at Scale/);
@@ -63,6 +74,6 @@ test("keeps interactive source and the paper assets", async () => {
     access(new URL("public/paper/overview.png", projectRoot)),
     access(new URL("public/paper/construction.png", projectRoot)),
     access(new URL("public/paper/transfer.png", projectRoot)),
-    access(new URL("public/social-preview.png", projectRoot)),
+    access(new URL("public/og.png", projectRoot)),
   ]);
 });
