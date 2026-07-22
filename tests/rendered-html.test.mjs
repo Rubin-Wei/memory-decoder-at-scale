@@ -67,10 +67,10 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /GENERAL PAIRING/);
   assert.match(interactive, /SHARED DOMAIN BASE/);
   assert.match(interactive, /IntersectionObserver/);
-  assert.match(interactive, /Memory Decoder at Scale/);
-  assert.match(interactive, /Two base settings\. A wheel of memories\./);
-  assert.match(interactive, /Turn retrieval into pretraining targets\./);
-  assert.match(interactive, /Scale knowledge, not reasoning\./);
+  assert.match(interactive, /The Idea/);
+  assert.match(interactive, /Swap Memory/);
+  assert.match(interactive, /Data Construction/);
+  assert.match(interactive, /The Main Result/);
   assert.match(interactive, /Globe2/);
   assert.match(interactive, /Dna/);
   assert.match(interactive, /Scale/);
