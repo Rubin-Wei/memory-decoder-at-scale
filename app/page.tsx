@@ -30,6 +30,7 @@ export default function Home() {
           <span>Memory Decoder at Scale</span>
         </a>
         <div className="nav-links">
+          <a href="#swap">Swap Memory</a>
           <a href="#architecture">Architecture</a>
           <a href="#figure3">Scale Memory</a>
           <a href="#results">Results</a>
