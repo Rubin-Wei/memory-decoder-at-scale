@@ -62,9 +62,9 @@ export default function Home() {
             ))}
           </p>
           <div className="affiliations">
-            <span><sup>1</sup>LUMIA Lab, School of Artificial Intelligence, Shanghai Jiao Tong University</span>
-            <span><sup>2</sup>Shanghai Artificial Intelligence Laboratory</span>
-            <span><sup>3</sup>Electronic Engineering, Tsinghua University</span>
+            <p><span>1</span><span>LUMIA Lab, School of Artificial Intelligence, Shanghai Jiao Tong University</span></p>
+            <p><span>2</span><span>Shanghai Artificial Intelligence Laboratory</span></p>
+            <p><span>3</span><span>Electronic Engineering, Tsinghua University</span></p>
           </div>
         </div>
 
