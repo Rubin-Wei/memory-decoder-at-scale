@@ -16,6 +16,10 @@ test("exports the complete paper site for GitHub Pages", async () => {
   assert.match(html, /300B/);
   assert.doesNotMatch(html, /207B/);
   assert.match(html, /39%/);
+  assert.match(html, /parameter-saving/);
+  assert.match(html, /34–44%/);
+  assert.match(html, /fewer parameters/);
+  assert.match(html, /range-saving/);
   assert.match(html, /A wheel of memories/);
   assert.match(html, /Two base settings/);
   assert.match(html, /General memory pairs with Pythia-410M/);
@@ -86,6 +90,8 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /useState/);
   assert.match(layout, /Memory Decoder at Scale/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  assert.match(css, /\.fixed-base\s*{[^}]*align-items:\s*center/s);
+  assert.match(css, /\.fixed-base div\s*{[^}]*justify-content:\s*center/s);
   assert.match(packageJson, /lucide-react/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton|vinext|wrangler/);
 

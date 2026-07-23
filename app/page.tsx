@@ -194,9 +194,17 @@ export default function Home() {
           </figure>
 
           <aside className="figure3-notes" aria-label="Figure 3 takeaways">
-            <div className="main-takeaway"><small>Pythia-410M + Memory-6.9B</small><strong>35.58</strong><p>beats the frozen Pythia-12B score of 35.38 with <b>39% fewer total parameters</b>.</p></div>
+            <div className="main-takeaway">
+              <small>Pythia-410M + Memory-6.9B</small>
+              <strong>35.58</strong>
+              <p>beats the frozen Pythia-12B score of 35.38 with</p>
+              <div className="parameter-saving"><b>39%</b><span>fewer total<br />parameters</span></div>
+            </div>
             <article><strong>18 / 18</strong><p>Base + Memory configurations outperform their frozen backbone alone.</p></article>
-            <article><strong>34–44%</strong><p>fewer parameters at matched scores along the two scaling curves.</p></article>
+            <article className="range-saving-card">
+              <strong className="range-saving"><b>34–44%</b><span>fewer parameters</span></strong>
+              <p>at matched scores along the two scaling curves.</p>
+            </article>
             <div className="figure-guide"><span><i /> circle area</span> total parameters<br /><span><i /> split fill</span> base / memory fractions</div>
           </aside>
         </div>

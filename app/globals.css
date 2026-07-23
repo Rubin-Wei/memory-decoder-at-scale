@@ -638,8 +638,12 @@ main {
 
 .fixed-base {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 292px;
   padding: 34px 30px;
+  text-align: center;
   color: var(--white);
   background: var(--ink);
   border-radius: 22px;
@@ -697,6 +701,7 @@ main {
   bottom: 26px;
   left: 28px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 8px;
   color: #aab8c7;
@@ -1434,8 +1439,54 @@ main {
   color: #c6d1dc;
 }
 
-.main-takeaway b {
-  color: #a9c7f2;
+.parameter-saving {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  color: var(--ink);
+  background: #dbe9ff;
+  border: 1px solid rgba(169, 199, 242, 0.72);
+  border-radius: 12px;
+}
+
+.parameter-saving b {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 0.9;
+}
+
+.parameter-saving span {
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.figure3-notes > .range-saving-card {
+  background: #f5f9ff;
+  border-color: #c9dcf7;
+}
+
+.figure3-notes article .range-saving {
+  display: grid;
+  gap: 4px;
+  color: var(--blue-dark);
+}
+
+.range-saving b {
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.range-saving span {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
 
 .figure3-notes article strong {
