@@ -106,7 +106,7 @@ export default function Home() {
         <div className="study-stats" aria-label="Study scale">
           <article><strong>300B</strong><span>Memory Training Tokens</span></article>
           <article><strong>6.9B</strong><span>Largest Memory</span></article>
-          <article><strong>18</strong><span>General Benchmarks</span></article>
+          <article><strong>18</strong><span>Diverse Benchmarks</span></article>
           <article><strong>3</strong><span>Domain Memories</span></article>
         </div>
       </section>
@@ -202,7 +202,7 @@ export default function Home() {
             </div>
             <article><strong>18 / 18</strong><p>Base + Memory configurations outperform their frozen backbone alone.</p></article>
             <article className="range-saving-card">
-              <strong className="range-saving"><b>34–44%</b><span>fewer parameters</span></strong>
+              <strong className="range-saving"><b>34～44%</b><span>fewer parameters</span></strong>
               <p>at matched scores along the two scaling curves.</p>
             </article>
             <div className="figure-guide"><span><i /> circle area</span> total parameters<br /><span><i /> split fill</span> base / memory fractions</div>

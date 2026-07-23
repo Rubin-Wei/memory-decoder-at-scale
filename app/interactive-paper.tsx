@@ -283,7 +283,7 @@ export function ResultsExplorer() {
         ))}
       </div>
       <div className="chart-axis" aria-hidden="true"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
-      <p className="chart-note">{view === "general" ? "Average across 18 general benchmarks with matched-size memory." : "Average across biology, law, and finance with a 1.7B domain memory."}</p>
+      <p className="chart-note">{view === "general" ? "Average across 18 diverse benchmarks with matched-size memory." : "Average across biology, law, and finance with a 1.7B domain memory."}</p>
     </div>
   );
 }

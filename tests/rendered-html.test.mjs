@@ -17,9 +17,12 @@ test("exports the complete paper site for GitHub Pages", async () => {
   assert.doesNotMatch(html, /207B/);
   assert.match(html, /39%/);
   assert.match(html, /parameter-saving/);
-  assert.match(html, /34–44%/);
+  assert.match(html, /34～44%/);
   assert.match(html, /fewer parameters/);
   assert.match(html, /range-saving/);
+  assert.match(html, /18/);
+  assert.match(html, /Diverse Benchmarks/);
+  assert.doesNotMatch(html, /General Benchmarks/);
   assert.match(html, /A wheel of memories/);
   assert.match(html, /Two base settings/);
   assert.match(html, /General memory pairs with Pythia-410M/);
@@ -76,6 +79,8 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /Pile General Memory/);
   assert.match(interactive, /General Pairing/);
   assert.match(interactive, /Shared Domain Base/);
+  assert.match(interactive, /18 diverse benchmarks/);
+  assert.doesNotMatch(interactive, /18 general benchmarks/);
   assert.match(interactive, /IntersectionObserver/);
   assert.match(interactive, /The Idea/);
   assert.match(interactive, /Swap Memory/);
