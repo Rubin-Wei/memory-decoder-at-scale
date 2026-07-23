@@ -10,6 +10,9 @@ test("exports the complete paper site for GitHub Pages", async () => {
 
   assert.match(html, /<title>Memory Decoder at Scale<\/title>/i);
   assert.match(html, /Memory Decoder at Scale/);
+  assert.match(html, /final-memory-word/);
+  assert.match(html, /brand-suffix/);
+  assert.doesNotMatch(html, /Choose a Memory Decoder logo|Option [A-F]:/);
   assert.match(html, /300B/);
   assert.doesNotMatch(html, /207B/);
   assert.match(html, /39%/);
@@ -61,6 +64,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(page, /ResultsExplorer/);
   assert.match(page, /MemoryWheel/);
   assert.match(page, /SectionToc/);
+  assert.match(page, /BrandLockup/);
   assert.match(page, /NEXT_PUBLIC_BASE_PATH/);
   assert.match(interactive, /generalResults/);
   assert.match(interactive, /domainResults/);
@@ -77,6 +81,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /Dna/);
   assert.match(interactive, /Scale/);
   assert.match(interactive, /ChartNoAxesCombined/);
+  assert.doesNotMatch(interactive, /BrandPicker|brandOptions|chooseBrand/);
   assert.match(interactive, /ArrowLeft/);
   assert.match(interactive, /useState/);
   assert.match(layout, /Memory Decoder at Scale/);

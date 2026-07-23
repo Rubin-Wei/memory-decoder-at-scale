@@ -115,17 +115,85 @@ main {
   letter-spacing: -0.01em;
 }
 
-.brand-mark {
+.brand-lockup {
+  gap: 10px;
+}
+
+.final-memory-word {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-bottom: 2px;
+  font-family: var(--serif);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+}
+
+.final-memory-word::after {
+  position: absolute;
+  right: 4px;
+  bottom: -1px;
+  left: 18px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--blue-dark), #9db7dc 72%, transparent);
+  border-radius: 999px;
+  content: "";
+}
+
+.final-memory-word > strong {
+  position: relative;
+  isolation: isolate;
   display: grid;
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
   place-items: center;
   color: var(--white);
-  background: var(--ink);
-  border-radius: 9px;
-  font-family: var(--serif);
+  background: linear-gradient(90deg, #294f84 0 48%, #6f94cc 52% 100%);
+  border-radius: 7px 4px 4px 7px;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.final-memory-word > strong > span {
+  position: relative;
+  z-index: 2;
+  transform: translateX(-0.5px);
+}
+
+.final-memory-word > strong > i {
+  position: absolute;
+  z-index: 1;
+  top: 4px;
+  bottom: 4px;
+  left: 12px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.6);
+  transform: rotate(12deg);
+}
+
+.final-memory-word > span {
+  display: inline-flex;
+  height: 22px;
+  align-items: center;
+  margin-left: -2px;
+  padding: 0 6px 1px 4px;
+  color: var(--blue-dark);
+  background: linear-gradient(90deg, var(--blue-soft), rgba(237, 243, 255, 0.24));
+  border-radius: 0 8px 8px 0;
   font-size: 18px;
-  font-style: italic;
+  font-weight: 700;
+}
+
+.brand-suffix {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -1993,7 +2061,7 @@ footer > a:last-child {
     padding-inline: 18px;
   }
 
-  .brand > span:last-child {
+  .site-nav .brand-suffix {
     display: none;
   }
 

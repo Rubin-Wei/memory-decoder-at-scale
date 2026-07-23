@@ -21,14 +21,23 @@ function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
 
+function BrandLockup({ footer = false }: { footer?: boolean }) {
+  return (
+    <a className={`brand brand-lockup${footer ? " footer-brand" : ""}`} href="#overview" aria-label="Memory Decoder at Scale">
+      <span className="final-memory-word" aria-hidden="true">
+        <strong><span>M</span><i /></strong>
+        <span>emory</span>
+      </span>
+      <span className="brand-suffix">Decoder at Scale</span>
+    </a>
+  );
+}
+
 export default function Home() {
   return (
     <main id="top">
       <nav className="site-nav" aria-label="Primary navigation">
-        <a className="brand" href="#overview" aria-label="Memory Decoder at Scale">
-          <span className="brand-mark">M</span>
-          <span>Memory Decoder at Scale</span>
-        </a>
+        <BrandLockup />
         <div className="nav-links">
           <a href="#swap">Swap Memory</a>
           <a href="#architecture">Architecture</a>
@@ -222,7 +231,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <a className="brand footer-brand" href="#overview"><span className="brand-mark">M</span><span>Memory Decoder at Scale</span></a>
+        <BrandLockup footer />
         <p>Separating reasoning from knowledge</p>
         <a href="#overview">Back to top ↑</a>
       </footer>
