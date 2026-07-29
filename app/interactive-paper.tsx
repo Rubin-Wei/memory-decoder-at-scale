@@ -97,8 +97,8 @@ const memories = [
     benchmark: "LawBench",
     score: "44.42",
     gain: "+8.97",
-    color: "#e7efff",
-    accent: "#5279b8",
+    color: "#eee9ff",
+    accent: "#7660ad",
     description: "Swap in a legal domain memory while the base model stays frozen.",
   },
   {

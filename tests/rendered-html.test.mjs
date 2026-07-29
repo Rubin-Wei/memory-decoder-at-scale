@@ -116,6 +116,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /Dna/);
   assert.match(interactive, /Scale/);
   assert.match(interactive, /ChartNoAxesCombined/);
+  assert.match(interactive, /id:\s*"law"[\s\S]*?color:\s*"#eee9ff"[\s\S]*?accent:\s*"#7660ad"/);
   assert.doesNotMatch(interactive, /BrandPicker|brandOptions|chooseBrand/);
   assert.match(interactive, /ArrowLeft/);
   assert.match(interactive, /useState/);
@@ -130,6 +131,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(css, /\.compact-heading,[\s\S]*?\.figure3-heading\s*{[^}]*grid-template-columns:\s*minmax\(0,\s*0\.9fr\)\s*minmax\(0,\s*1\.1fr\)/s);
   assert.match(css, /\.figure3-notes\s*{[^}]*align-content:\s*space-between/s);
   assert.match(css, /\.distributed-faiss\s*{[^}]*display:\s*inline[^}]*color:\s*#4f76ad[^}]*linear-gradient\(180deg,\s*transparent\s*68%,\s*rgba\(124,\s*157,\s*207,\s*0\.18\)\s*68%\)[^}]*font-family:\s*inherit[^}]*font-weight:\s*650/s);
+  assert.match(css, /conic-gradient\(from\s*-45deg,\s*#dff3ec\s*0deg\s*87deg[\s\S]*?#eee9ff\s*90deg\s*177deg[\s\S]*?#fff0df\s*180deg\s*267deg[\s\S]*?#e4edff\s*270deg\s*357deg/);
   assert.match(css, /\.fixed-base\s*{[^}]*align-items:\s*center/s);
   assert.match(css, /\.fixed-base div\s*{[^}]*justify-content:\s*center/s);
   assert.match(packageJson, /lucide-react/);
