@@ -1242,6 +1242,19 @@ main {
   font-weight: 600;
 }
 
+.figure-tech {
+  margin-left: auto;
+  padding: 5px 9px;
+  color: var(--blue-dark);
+  background: linear-gradient(90deg, #e8f0ff, #f3f7ff);
+  border: 1px solid rgba(82, 121, 184, 0.22);
+  border-radius: 999px;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
 .paper-feature figcaption {
   margin-top: 18px;
   color: var(--muted);
@@ -2227,6 +2240,10 @@ footer > a:last-child {
     align-items: flex-start;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .figure-tech {
+    margin-left: 0;
   }
 
   .memory-stage {

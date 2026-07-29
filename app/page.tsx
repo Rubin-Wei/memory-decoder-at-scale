@@ -152,7 +152,7 @@ export default function Home() {
             <p>At pretraining scale, a corpus with <i>N</i> tokens yields <i>N</i> keys and <i>N</i> training queries, creating a joint indexing-and-search bottleneck. Compression, centroid-range sharding, and parallel GPU search enable memory pretraining over 300B training tokens.</p>
           </div>
 
-          <div className="construction-steps" aria-label="Retrieval target construction steps">
+          <div className="construction-steps" aria-label="kNN distribution construction steps">
             <article><span>01</span><strong>Encode</strong><p>Use the frozen Pythia-6.9B final hidden state as a 4096-d key for each context.</p></article>
             <article><span>02</span><strong>Compress</strong><p>OPQ256 projects every key from 4096 to 256 dimensions before indexing.</p></article>
             <article><span>03</span><strong>Route</strong><p>HNSW selects IVF centroids, then maps each query to centroid-range shards.</p></article>
@@ -160,7 +160,11 @@ export default function Home() {
           </div>
 
           <figure className="paper-feature construction-figure">
-            <div className="figure-kicker"><span>Figure 2</span><strong>Pretraining-scale retrieval-target construction</strong></div>
+            <div className="figure-kicker">
+              <span>Figure 2</span>
+              <strong>Pretraining-scale <i>k</i>NN Distribution construction</strong>
+              <em className="figure-tech">Faiss-powered</em>
+            </div>
             <Image
               src={asset("/paper/construction.png")}
               alt="OPQ compression, HNSW and IVF two-level routing, and independent search over centroid-range shards."
