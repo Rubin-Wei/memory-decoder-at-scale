@@ -1,6 +1,6 @@
 # Memory Decoder at Scale
 
-Official project page for **A Parametric, Long-term Memory Pretrained at Scale**.
+Official project page for **Memory Decoder at Scale: A Pretrained, Parametric Long-Term Memory**.
 
 The page presents the method, corpus-scale construction pipeline, main results,
 analysis, paper, code, and released model checkpoints. Result comparisons and

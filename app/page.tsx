@@ -51,11 +51,11 @@ export default function Home() {
 
       <header className="hero" id="overview">
         <div className="hero-copy">
-          <p className="eyebrow">A Parametric Long-Term Memory Pretrained at Scale</p>
+          <p className="eyebrow">A Pretrained, Parametric Long-Term Memory</p>
           <h1><span className="hero-title-line">Memory Decoder</span><br /><em>at Scale</em></h1>
           <p className="hero-deck">
-            Separate reasoning from knowledge. Keep reasoning in a frozen language model,
-            pretrain knowledge as a standalone memory, and scale either component independently.
+            Disentangle long-term memory and reasoning. Keep the base language model frozen,
+            pretrain long-term memory as a standalone component, and scale memory independently.
           </p>
 
           <div className="hero-actions">
@@ -87,8 +87,8 @@ export default function Home() {
           <div className="parallel-mark" aria-hidden="true"><i /><b>+</b><i /></div>
           <div className="hero-module memory-module">
             <small>Swappable Memory</small>
-            <strong>Knowledge</strong>
-            <span>general or domain corpus knowledge</span>
+            <strong>Long-Term Memory</strong>
+            <span>general or domain memory</span>
           </div>
           <div className="distribution-line"><span>Run Separately</span><i /><span>Combine Once</span></div>
         </div>
@@ -97,10 +97,10 @@ export default function Home() {
       <section className="idea-section section-shell" id="idea" aria-labelledby="idea-title">
         <div className="section-label">01 · The Idea</div>
         <div className="idea-copy">
-          <h2 id="idea-title">Knowledge and reasoning do not need to live in the same parameters.</h2>
+          <h2 id="idea-title">Long-term memory and reasoning need not remain entangled in the same parameters.</h2>
           <p>
-            A standard language model uses one parameter set both to retain long-term knowledge and to reason.
-            We factor those roles into a frozen base model for reasoning and an independently pretrained decoder memory for knowledge.
+            Decoder-only language models entangle long-term memory and reasoning within a single parameter set.
+            We pretrain long-term memory as a standalone Memory Decoder that can be scaled, swapped, and reused while the base model remains frozen.
           </p>
         </div>
         <div className="study-stats" aria-label="Study scale">
@@ -117,7 +117,7 @@ export default function Home() {
         <div className="section-label">03 · Architecture</div>
         <div className="section-heading compact-heading">
           <h2 id="architecture-title">Two objectives.<br /><em>One prediction.</em></h2>
-          <p>The base model learns language modeling and reasoning; the memory distills retrieval-induced next-token distributions into parametric knowledge. At inference, both process the same context in parallel.</p>
+          <p>The base model learns language modeling and reasoning; the standalone memory is trained to approximate retrieval-induced next-token distributions while retaining a next-token objective. At inference, both process the same context in parallel.</p>
         </div>
 
         <figure className="paper-feature architecture-figure">
@@ -132,14 +132,14 @@ export default function Home() {
         </figure>
 
         <div className="architecture-principles">
-          <article><span>θ</span><div><small>Reasoning Parameters</small><strong>Frozen base model</strong><p>Standard next-token pretraining supplies language modeling, computation, and reasoning.</p></div></article>
-          <article><span>ψ</span><div><small>Knowledge Parameters</small><strong>Standalone memory</strong><p>A decoder learns the retrieval-induced distribution while retaining a next-token objective.</p></div></article>
+          <article><span>θ</span><div><small>Base Model Parameters</small><strong>Frozen base model</strong><p>Standard next-token pretraining supplies language modeling, computation, and reasoning.</p></div></article>
+          <article><span>ψ</span><div><small>Memory Parameters</small><strong>Standalone memory</strong><p>A decoder learns the retrieval-induced distribution while retaining a next-token objective.</p></div></article>
           <article><span>α</span><div><small>Plug-and-Play Inference</small><strong>Parallel composition</strong><p>Exchange the active memory, then interpolate two next-token distributions.</p></div></article>
         </div>
 
         <div className="equation-band" aria-label="Inference interpolation equation">
           <span>Inference</span>
-          <p><i>p</i><sub>final</sub> = (1 − α) <i>p</i><sub>reasoning</sub> + α <i>p</i><sub>knowledge</sub></p>
+          <p><i>p</i><sub>final</sub> = (1 − α) <i>p</i><sub>base</sub> + α <i>p</i><sub>memory</sub></p>
           <small>Two Forward Passes · One Final Distribution</small>
         </div>
       </section>
@@ -215,7 +215,7 @@ export default function Home() {
           <div className="section-label">06 · More Results</div>
           <div className="section-heading results-heading">
             <h2 id="results-title">The gain persists<br /><em>across settings.</em></h2>
-            <p>Switch between general and domain memory to see how the same knowledge module idea behaves across backbone scales.</p>
+            <p>Switch between general and domain memory to compare their gains across backbone scales.</p>
           </div>
 
           <ResultsExplorer />

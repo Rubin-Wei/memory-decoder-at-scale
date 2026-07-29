@@ -10,6 +10,16 @@ test("exports the complete paper site for GitHub Pages", async () => {
 
   assert.match(html, /<title>Memory Decoder at Scale<\/title>/i);
   assert.match(html, /Memory Decoder at Scale/);
+  assert.match(html, /A Pretrained, Parametric Long-Term Memory/);
+  assert.match(html, /Disentangle long-term memory and reasoning/);
+  assert.match(html, /entangle long-term memory and reasoning/);
+  assert.match(html, /Long-Term Memory/);
+  assert.match(html, /Base Model Parameters/);
+  assert.match(html, /Memory Parameters/);
+  assert.match(html, /<sub>base<\/sub>/);
+  assert.match(html, /<sub>memory<\/sub>/);
+  assert.match(html, /Attached Memory Module/);
+  assert.doesNotMatch(html, /Separate reasoning from knowledge\.|Knowledge Parameters|Attached Knowledge Module/);
   assert.match(html, /final-memory-word/);
   assert.match(html, /brand-suffix/);
   assert.doesNotMatch(html, /Choose a Memory Decoder logo|Option [A-F]:/);
@@ -82,6 +92,8 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /Pile General Memory/);
   assert.match(interactive, /General Pairing/);
   assert.match(interactive, /Shared Domain Base/);
+  assert.match(interactive, /Attached Memory Module/);
+  assert.doesNotMatch(interactive, /Attached Knowledge Module|reasoning backbone/);
   assert.match(interactive, /18 diverse benchmarks/);
   assert.doesNotMatch(interactive, /18 general benchmarks/);
   assert.match(interactive, /IntersectionObserver/);
@@ -97,6 +109,8 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /ArrowLeft/);
   assert.match(interactive, /useState/);
   assert.match(layout, /Memory Decoder at Scale/);
+  assert.match(layout, /entangle long-term memory and reasoning/);
+  assert.doesNotMatch(layout, /Scale knowledge without scaling the reasoning backbone/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /\.fixed-base\s*{[^}]*align-items:\s*center/s);
   assert.match(css, /\.fixed-base div\s*{[^}]*justify-content:\s*center/s);

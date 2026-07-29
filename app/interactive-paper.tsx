@@ -99,7 +99,7 @@ const memories = [
     gain: "+8.97",
     color: "#e7efff",
     accent: "#5279b8",
-    description: "Swap in legal knowledge while the reasoning backbone stays frozen.",
+    description: "Swap in a legal domain memory while the base model stays frozen.",
   },
   {
     id: "finance",
@@ -246,7 +246,7 @@ export function MemoryWheel() {
         </div>
 
         <div className="memory-readout" key={memory.id} style={{ "--active-accent": memory.accent } as CSSProperties}>
-          <div><small>Attached Knowledge Module</small><strong>{memory.corpus}</strong><span>{memory.description}</span></div>
+          <div><small>Attached Memory Module</small><strong>{memory.corpus}</strong><span>{memory.description}</span></div>
           <i aria-hidden="true">→</i>
           <div className="readout-score"><small>{memory.pairing}</small><span>{memory.benchmark}</span><strong>{memory.score}</strong><b>{memory.gain}</b></div>
         </div>

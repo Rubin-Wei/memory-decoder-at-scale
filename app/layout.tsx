@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Memory Decoder at Scale",
     description:
-      "Pretrain memory independently. Attach it to frozen language models. Scale knowledge without scaling the reasoning backbone.",
+      "Decoder-only language models entangle long-term memory and reasoning. Pretrain and scale memory independently while the base model remains frozen.",
     type: "website",
     url: siteUrl,
     images: [
