@@ -73,6 +73,9 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(page, /SectionToc/);
   assert.match(page, /BrandLockup/);
   assert.match(page, /NEXT_PUBLIC_BASE_PATH/);
+  assert.match(page, /overview\.png[\s\S]*?width=\{1800\}[\s\S]*?height=\{1013\}/);
+  assert.match(page, /construction\.png[\s\S]*?width=\{1800\}[\s\S]*?height=\{884\}/);
+  assert.match(page, /transfer\.png[\s\S]*?width=\{1800\}[\s\S]*?height=\{1070\}/);
   assert.match(interactive, /generalResults/);
   assert.match(interactive, /domainResults/);
   assert.match(interactive, /wheel-track/);

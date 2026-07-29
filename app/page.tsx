@@ -125,8 +125,8 @@ export default function Home() {
           <Image
             src={asset("/paper/overview.png")}
             alt="The base model is trained for next-token prediction, the parametric memory aligns with a retriever distribution, and their predictions are interpolated at inference."
-            width={1489}
-            height={850}
+            width={1800}
+            height={1013}
           />
           <figcaption>Independent pretraining preserves role separation; inference requires no online datastore.</figcaption>
         </figure>
@@ -164,8 +164,8 @@ export default function Home() {
             <Image
               src={asset("/paper/construction.png")}
               alt="OPQ compression, HNSW and IVF two-level routing, and independent search over centroid-range shards."
-              width={1410}
-              height={532}
+              width={1800}
+              height={884}
             />
             <figcaption>Queries are grouped by shard ID so each selected shard can search its batch independently with GPU acceleration.</figcaption>
           </figure>
@@ -186,8 +186,8 @@ export default function Home() {
               <Image
                 src={asset("/paper/transfer.png")}
                 alt="Average score across 18 tasks versus total parameters, comparing frozen base models with base plus memory configurations."
-                width={1195}
-                height={710}
+                width={1800}
+                height={1070}
               />
               <span>Open full size <Arrow /></span>
             </a>
