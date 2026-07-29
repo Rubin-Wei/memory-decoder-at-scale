@@ -45,10 +45,11 @@ test("exports the complete paper site for GitHub Pages", async () => {
   assert.match(html, /General/);
   assert.match(html, /Two objectives/);
   assert.match(html, /Data Construction/);
-  assert.match(html, /Pretraining-scale <i>k<\/i>NN Distribution construction/);
-  assert.match(html, /<b>Faiss<\/b><small>Distributed high-concurrency search<\/small>/);
+  assert.match(html, /<mark class="distributed-faiss">Distributed Faiss<\/mark> pipeline for constructing pretraining-scale <i>k<\/i>NN distributions/);
   assert.doesNotMatch(html, /Faiss-powered/);
   assert.doesNotMatch(html, /Faiss-based distributed high-concurrency retrieval system/);
+  assert.doesNotMatch(html, /Distributed high-concurrency search/);
+  assert.doesNotMatch(html, /Pretraining-scale <i>k<\/i>NN Distribution construction/);
   assert.doesNotMatch(html, /Pretraining-scale retrieval-target construction/);
   assert.match(html, /Figure 3/);
   assert.match(html, /Scale memory/);
@@ -128,8 +129,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(css, /\.brand-scale\s*{[^}]*linear-gradient\(90deg,\s*var\(--blue-dark\)[^}]*background-clip:\s*text[^}]*-webkit-text-fill-color:\s*transparent/s);
   assert.match(css, /\.compact-heading,[\s\S]*?\.figure3-heading\s*{[^}]*grid-template-columns:\s*minmax\(0,\s*0\.9fr\)\s*minmax\(0,\s*1\.1fr\)/s);
   assert.match(css, /\.figure3-notes\s*{[^}]*align-content:\s*space-between/s);
-  assert.match(css, /\.figure-tech\s*{[^}]*display:\s*inline-flex[^}]*margin-left:\s*auto[^}]*max-width:\s*320px/s);
-  assert.match(css, /\.figure-tech b\s*{[^}]*color:\s*var\(--white\)[^}]*linear-gradient\(90deg,\s*var\(--blue-dark\)/s);
+  assert.match(css, /\.distributed-faiss\s*{[^}]*color:\s*var\(--blue-dark\)[^}]*linear-gradient\(90deg,\s*#e8f0ff,\s*#f3f7ff\)[^}]*font-weight:\s*800/s);
   assert.match(css, /\.fixed-base\s*{[^}]*align-items:\s*center/s);
   assert.match(css, /\.fixed-base div\s*{[^}]*justify-content:\s*center/s);
   assert.match(packageJson, /lucide-react/);

@@ -162,11 +162,7 @@ export default function Home() {
           <figure className="paper-feature construction-figure">
             <div className="figure-kicker">
               <span>Figure 2</span>
-              <strong>Pretraining-scale <i>k</i>NN Distribution construction</strong>
-              <em className="figure-tech">
-                <b>Faiss</b>
-                <small>Distributed high-concurrency search</small>
-              </em>
+              <strong><mark className="distributed-faiss">Distributed Faiss</mark> pipeline for constructing pretraining-scale <i>k</i>NN distributions</strong>
             </div>
             <Image
               src={asset("/paper/construction.png")}
