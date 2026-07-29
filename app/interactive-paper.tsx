@@ -60,9 +60,9 @@ const memories = [
     corpus: "General Memory",
     size: "6.9B parameters",
     pairing: "Pythia-410M + Memory",
-    benchmark: "18-task AVG",
-    score: "35.58",
-    gain: "+7.30",
+    benchmark: "17-task AVG",
+    score: "37.34",
+    gain: "+7.48",
     color: "#e4edff",
     accent: "#5279b8",
     description: "Pretrained on the deduplicated Pile for broad corpus knowledge.",
@@ -121,9 +121,9 @@ const memories = [
 ];
 
 const generalResults = [
-  { model: "Pythia 1.4B", base: 31.03, memory: 32.64, gain: 1.61 },
-  { model: "Pythia 2.8B", base: 32.15, memory: 33.73, gain: 1.58 },
-  { model: "Pythia 6.9B", base: 34.44, memory: 35.92, gain: 1.48 },
+  { model: "Pythia 1.4B", base: 32.76, memory: 34.36, gain: 1.60 },
+  { model: "Pythia 2.8B", base: 33.89, memory: 35.49, gain: 1.60 },
+  { model: "Pythia 6.9B", base: 36.30, memory: 37.79, gain: 1.49 },
 ];
 
 const domainResults = [
@@ -283,7 +283,7 @@ export function ResultsExplorer() {
         ))}
       </div>
       <div className="chart-axis" aria-hidden="true"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
-      <p className="chart-note">{view === "general" ? "Average across 18 diverse benchmarks with matched-size memory." : "Average across biology, law, and finance with a 1.7B domain memory."}</p>
+      <p className="chart-note">{view === "general" ? "Average across 17 diverse benchmarks with matched-size memory." : "Average across biology, law, and finance with a 1.7B domain memory."}</p>
     </div>
   );
 }

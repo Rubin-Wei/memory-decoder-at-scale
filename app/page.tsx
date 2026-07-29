@@ -106,7 +106,7 @@ export default function Home() {
         <div className="study-stats" aria-label="Study scale">
           <article><strong>300B</strong><span>Memory Training Tokens</span></article>
           <article><strong>6.9B</strong><span>Largest Memory</span></article>
-          <article><strong>18</strong><span>Diverse Benchmarks</span></article>
+          <article><strong>17</strong><span>Diverse Benchmarks</span></article>
           <article><strong>3</strong><span>Domain Memories</span></article>
         </div>
       </section>
@@ -188,7 +188,7 @@ export default function Home() {
             <a href={asset("/paper/transfer.png")} target="_blank" rel="noreferrer" aria-label="Open Figure 3 at full size">
               <Image
                 src={asset("/paper/transfer.png")}
-                alt="Average score across 18 tasks versus total parameters, comparing frozen base models with base plus memory configurations."
+                alt="Average score across 17 tasks versus total parameters, comparing frozen base models with base plus memory configurations."
                 width={1800}
                 height={1070}
               />
@@ -199,13 +199,13 @@ export default function Home() {
           <aside className="figure3-notes" aria-label="Figure 3 takeaways">
             <div className="main-takeaway">
               <small>Pythia-410M + Memory-6.9B</small>
-              <strong>35.58</strong>
-              <p>beats the frozen Pythia-12B score of 35.38 with</p>
+              <strong>37.34</strong>
+              <p>beats the frozen Pythia-12B score of 37.24 with</p>
               <div className="parameter-saving"><b>39%</b><span>fewer total<br />parameters</span></div>
             </div>
             <article><strong>18 / 18</strong><p>Base + Memory configurations outperform their frozen backbone alone.</p></article>
             <article className="range-saving-card">
-              <strong className="range-saving"><b>34～44%</b><span>fewer parameters</span></strong>
+              <strong className="range-saving"><b>32～42%</b><span>fewer parameters</span></strong>
               <p>at matched scores along the two scaling curves.</p>
             </article>
             <div className="figure-guide"><span><i /> circle area</span> total parameters<br /><span><i /> split fill</span> base / memory fractions</div>
@@ -224,7 +224,7 @@ export default function Home() {
           <ResultsExplorer />
 
           <div className="evidence-row">
-            <article><strong>51 / 54</strong><p>general-memory task–scale combinations improve.</p></article>
+            <article><strong>47 / 51</strong><p>general-memory task–scale combinations improve.</p></article>
             <article><strong>15 / 15</strong><p>domain evaluations improve across all Qwen3 scales.</p></article>
             <article><strong>20%</strong><p>of the standard budget transfers memory across vocabularies.</p></article>
           </div>
@@ -243,7 +243,7 @@ export default function Home() {
 
       <footer>
         <BrandLockup footer />
-        <p>Separating reasoning from knowledge</p>
+        <p>Disentangling long-term memory and reasoning</p>
         <a href="#overview">Back to top ↑</a>
       </footer>
     </main>
