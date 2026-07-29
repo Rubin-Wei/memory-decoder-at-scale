@@ -163,7 +163,7 @@ export default function Home() {
             <div className="figure-kicker">
               <span>Figure 2</span>
               <strong>Pretraining-scale <i>k</i>NN Distribution construction</strong>
-              <em className="figure-tech">Faiss-powered</em>
+              <em className="figure-tech">Faiss-based distributed high-concurrency retrieval system</em>
             </div>
             <Image
               src={asset("/paper/construction.png")}

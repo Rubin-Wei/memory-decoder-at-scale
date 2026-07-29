@@ -1244,7 +1244,8 @@ main {
 
 .figure-tech {
   margin-left: auto;
-  padding: 5px 9px;
+  max-width: 360px;
+  padding: 6px 11px;
   color: var(--blue-dark);
   background: linear-gradient(90deg, #e8f0ff, #f3f7ff);
   border: 1px solid rgba(82, 121, 184, 0.22);
@@ -1253,6 +1254,8 @@ main {
   font-style: normal;
   font-weight: 800;
   letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-align: center;
 }
 
 .paper-feature figcaption {
@@ -2244,6 +2247,7 @@ footer > a:last-child {
 
   .figure-tech {
     margin-left: 0;
+    max-width: 100%;
   }
 
   .memory-stage {
