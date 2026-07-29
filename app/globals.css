@@ -1243,19 +1243,35 @@ main {
 }
 
 .figure-tech {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-left: auto;
-  max-width: 360px;
-  padding: 6px 11px;
+  max-width: 320px;
+  padding: 4px 10px 4px 4px;
   color: var(--blue-dark);
   background: linear-gradient(90deg, #e8f0ff, #f3f7ff);
   border: 1px solid rgba(82, 121, 184, 0.22);
   border-radius: 999px;
-  font-size: 9px;
   font-style: normal;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  line-height: 1.35;
-  text-align: center;
+}
+
+.figure-tech b {
+  padding: 4px 8px;
+  color: var(--white);
+  background: linear-gradient(90deg, var(--blue-dark), #668dc8);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.01em;
+}
+
+.figure-tech small {
+  color: #48668f;
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
 }
 
 .paper-feature figcaption {
