@@ -129,7 +129,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(css, /\.brand-scale\s*{[^}]*linear-gradient\(90deg,\s*var\(--blue-dark\)[^}]*background-clip:\s*text[^}]*-webkit-text-fill-color:\s*transparent/s);
   assert.match(css, /\.compact-heading,[\s\S]*?\.figure3-heading\s*{[^}]*grid-template-columns:\s*minmax\(0,\s*0\.9fr\)\s*minmax\(0,\s*1\.1fr\)/s);
   assert.match(css, /\.figure3-notes\s*{[^}]*align-content:\s*space-between/s);
-  assert.match(css, /\.distributed-faiss\s*{[^}]*color:\s*var\(--blue-dark\)[^}]*linear-gradient\(90deg,\s*#e8f0ff,\s*#f3f7ff\)[^}]*font-weight:\s*800/s);
+  assert.match(css, /\.distributed-faiss\s*{[^}]*display:\s*inline[^}]*color:\s*#4f76ad[^}]*linear-gradient\(180deg,\s*transparent\s*68%,\s*rgba\(124,\s*157,\s*207,\s*0\.18\)\s*68%\)[^}]*font-family:\s*inherit[^}]*font-weight:\s*650/s);
   assert.match(css, /\.fixed-base\s*{[^}]*align-items:\s*center/s);
   assert.match(css, /\.fixed-base div\s*{[^}]*justify-content:\s*center/s);
   assert.match(packageJson, /lucide-react/);

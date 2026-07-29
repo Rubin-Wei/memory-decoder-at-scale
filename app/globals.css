@@ -1243,18 +1243,15 @@ main {
 }
 
 .distributed-faiss {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 7px 3px;
-  color: var(--blue-dark);
-  background: linear-gradient(90deg, #e8f0ff, #f3f7ff);
-  border: 1px solid rgba(82, 121, 184, 0.22);
-  border-radius: 7px;
-  font-family: var(--sans);
-  font-size: 0.86em;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+  display: inline;
+  padding: 0 0.05em 0.03em;
+  color: #4f76ad;
+  background: linear-gradient(180deg, transparent 68%, rgba(124, 157, 207, 0.18) 68%);
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 650;
+  letter-spacing: inherit;
+  line-height: inherit;
 }
 
 .paper-feature figcaption {
