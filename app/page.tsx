@@ -28,7 +28,7 @@ function BrandLockup({ footer = false }: { footer?: boolean }) {
         <strong><span>M</span><i /></strong>
         <span>emory</span>
       </span>
-      <span className="brand-suffix">Decoder at Scale</span>
+      <span className="brand-suffix">Decoder <span className="brand-scale">at Scale</span></span>
     </a>
   );
 }
@@ -100,7 +100,7 @@ export default function Home() {
           <h2 id="idea-title">Long-term memory and reasoning need not remain entangled in the same parameters.</h2>
           <p>
             Decoder-only language models entangle long-term memory and reasoning within a single parameter set.
-            We pretrain long-term memory as a standalone Memory Decoder that can be scaled, swapped, and reused while the base model remains frozen.
+            We pretrain long-term memory as a standalone memory that can be scaled, swapped, and reused while the base model remains frozen.
           </p>
         </div>
         <div className="study-stats" aria-label="Study scale">
@@ -117,7 +117,7 @@ export default function Home() {
         <div className="section-label">03 · Architecture</div>
         <div className="section-heading compact-heading">
           <h2 id="architecture-title">Two objectives.<br /><em>One prediction.</em></h2>
-          <p>The base model learns language modeling and reasoning; the standalone memory is trained to approximate retrieval-induced next-token distributions while retaining a next-token objective. At inference, both process the same context in parallel.</p>
+          <p>The base model learns language modeling and reasoning; the standalone memory is trained to approximate retrieval-induced next-token distributions. At inference, both process the same context in parallel.</p>
         </div>
 
         <figure className="paper-feature architecture-figure">

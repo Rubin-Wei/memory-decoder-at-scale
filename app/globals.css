@@ -196,6 +196,10 @@ main {
   white-space: nowrap;
 }
 
+.brand-scale {
+  color: var(--blue);
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -348,6 +352,7 @@ main {
 
 .hero h1 em {
   display: inline-block;
+  padding-right: 0.14em;
   color: var(--blue-dark);
   background: linear-gradient(90deg, var(--blue-dark) 0%, #5f88c5 58%, #91add5 100%);
   background-clip: text;
@@ -1051,7 +1056,20 @@ main {
 }
 
 .compact-heading {
-  max-width: 980px;
+  max-width: none;
+}
+
+.compact-heading,
+.figure3-heading {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 64px;
+}
+
+.compact-heading > p,
+.figure3-heading > p {
+  max-width: 620px;
+  justify-self: end;
 }
 
 .method-grid {
@@ -1358,7 +1376,7 @@ main {
 .figure3-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 275px;
-  align-items: start;
+  align-items: stretch;
   gap: 18px;
   margin-top: 64px;
 }
@@ -1405,12 +1423,13 @@ main {
 
 .figure3-notes {
   display: grid;
-  gap: 12px;
+  align-content: space-between;
+  gap: 10px;
 }
 
 .figure3-notes > div,
 .figure3-notes > article {
-  padding: 22px;
+  padding: 18px 20px;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -1431,18 +1450,18 @@ main {
 
 .main-takeaway strong {
   display: block;
-  margin-top: 15px;
+  margin-top: 11px;
   font-family: var(--serif);
-  font-size: 52px;
+  font-size: 48px;
   font-weight: 500;
   line-height: 0.9;
 }
 
 .main-takeaway p,
 .figure3-notes article p {
-  margin: 13px 0 0;
+  margin: 9px 0 0;
   font-size: 11px;
-  line-height: 1.65;
+  line-height: 1.5;
 }
 
 .main-takeaway p {
@@ -1452,9 +1471,9 @@ main {
 .parameter-saving {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: 14px;
-  padding: 12px 14px;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 12px;
   color: var(--ink);
   background: #dbe9ff;
   border: 1px solid rgba(169, 199, 242, 0.72);
@@ -1512,7 +1531,7 @@ main {
 .figure3-notes .figure-guide {
   color: var(--muted);
   font-size: 9px;
-  line-height: 1.9;
+  line-height: 1.65;
 }
 
 .figure-guide span {

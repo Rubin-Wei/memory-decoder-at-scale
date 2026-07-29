@@ -22,6 +22,11 @@ test("exports the complete paper site for GitHub Pages", async () => {
   assert.doesNotMatch(html, /Separate reasoning from knowledge\.|Knowledge Parameters|Attached Knowledge Module/);
   assert.match(html, /final-memory-word/);
   assert.match(html, /brand-suffix/);
+  assert.match(html, /brand-scale/);
+  assert.match(html, /standalone memory that can be scaled/);
+  assert.match(html, /standalone memory is trained to approximate retrieval-induced next-token distributions\./);
+  assert.doesNotMatch(html, /standalone Memory Decoder that can be scaled/);
+  assert.doesNotMatch(html, /retrieval-induced next-token distributions while retaining a next-token objective/);
   assert.doesNotMatch(html, /Choose a Memory Decoder logo|Option [A-F]:/);
   assert.match(html, /300B/);
   assert.doesNotMatch(html, /207B/);
@@ -113,6 +118,10 @@ test("keeps interactive source and the paper assets", async () => {
   assert.doesNotMatch(layout, /Scale knowledge without scaling the reasoning backbone/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /\.hero h1 em\s*{[^}]*linear-gradient\([^}]*background-clip:\s*text/s);
+  assert.match(css, /\.hero h1 em\s*{[^}]*padding-right:\s*0\.14em/s);
+  assert.match(css, /\.brand-scale\s*{[^}]*color:\s*var\(--blue\)/s);
+  assert.match(css, /\.compact-heading,[\s\S]*?\.figure3-heading\s*{[^}]*grid-template-columns:\s*minmax\(0,\s*0\.9fr\)\s*minmax\(0,\s*1\.1fr\)/s);
+  assert.match(css, /\.figure3-notes\s*{[^}]*align-content:\s*space-between/s);
   assert.match(css, /\.fixed-base\s*{[^}]*align-items:\s*center/s);
   assert.match(css, /\.fixed-base div\s*{[^}]*justify-content:\s*center/s);
   assert.match(packageJson, /lucide-react/);
