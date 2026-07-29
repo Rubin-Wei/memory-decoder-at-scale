@@ -5,13 +5,13 @@ import { ChartNoAxesCombined, Dna, Globe2, Scale } from "lucide-react";
 
 const tocItems = [
   { id: "overview", number: "00", label: "Overview" },
-  { id: "idea", number: "01", label: "The Idea" },
+  { id: "idea", number: "01", label: "Core Idea" },
   { id: "swap", number: "02", label: "Swap Memory" },
   { id: "architecture", number: "03", label: "Architecture" },
   { id: "construction", number: "04", label: "Data Construction" },
   { id: "figure3", number: "05", label: "Scale Memory" },
-  { id: "results", number: "06", label: "More Results" },
-  { id: "resources", number: "07", label: "Explore" },
+  { id: "results", number: "06", label: "Results" },
+  { id: "resources", number: "07", label: "Resources" },
 ];
 
 export function SectionToc() {

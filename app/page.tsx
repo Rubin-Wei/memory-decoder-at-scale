@@ -95,7 +95,7 @@ export default function Home() {
       </header>
 
       <section className="idea-section section-shell" id="idea" aria-labelledby="idea-title">
-        <div className="section-label">01 · The Idea</div>
+        <div className="section-label">01 · Core Idea</div>
         <div className="idea-copy">
           <h2 id="idea-title">Long-term memory and reasoning need not remain entangled in the same parameters.</h2>
           <p>
@@ -215,7 +215,7 @@ export default function Home() {
 
       <section className="results-section" id="results" aria-labelledby="results-title">
         <div className="section-shell">
-          <div className="section-label">06 · More Results</div>
+          <div className="section-label">06 · Results</div>
           <div className="section-heading results-heading">
             <h2 id="results-title">The gain persists<br /><em>across settings.</em></h2>
             <p>Switch between general and domain memory to compare their gains across backbone scales.</p>
@@ -232,7 +232,7 @@ export default function Home() {
       </section>
 
       <section className="resources section-shell" id="resources" aria-labelledby="resources-title">
-        <div className="section-label">07 · Explore</div>
+        <div className="section-label">07 · Resources</div>
         <h2 id="resources-title" className="visually-hidden">Paper, code, and models</h2>
         <div className="resource-links simple-resource-links">
           <a href={asset("/paper.pdf")}><strong>Paper</strong><Arrow /></a>

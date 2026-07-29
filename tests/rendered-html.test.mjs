@@ -55,6 +55,10 @@ test("exports the complete paper site for GitHub Pages", async () => {
   assert.match(html, /Scale memory/);
   assert.match(html, /small frozen base model paired with a large memory/i);
   assert.match(html, /Page contents/);
+  assert.match(html, /01 · Core Idea/);
+  assert.match(html, /06 · Results/);
+  assert.match(html, /07 · Resources/);
+  assert.doesNotMatch(html, /01 · The Idea|06 · More Results|07 · Explore/);
   assert.match(html, /General memory/);
   assert.match(html, /href="\/memory-decoder-at-scale\/paper\.pdf"/);
   assert.match(html, /src="\/memory-decoder-at-scale\/paper\/overview\.png"/);
@@ -114,7 +118,10 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /18 diverse benchmarks/);
   assert.doesNotMatch(interactive, /18 general benchmarks/);
   assert.match(interactive, /IntersectionObserver/);
-  assert.match(interactive, /The Idea/);
+  assert.match(interactive, /Core Idea/);
+  assert.match(interactive, /label:\s*"Results"/);
+  assert.match(interactive, /label:\s*"Resources"/);
+  assert.doesNotMatch(interactive, /The Idea|More Results|label:\s*"Explore"/);
   assert.match(interactive, /Swap Memory/);
   assert.match(interactive, /Data Construction/);
   assert.match(interactive, /Scale Memory/);
