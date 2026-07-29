@@ -133,6 +133,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(css, /\.distributed-faiss\s*{[^}]*display:\s*inline[^}]*color:\s*#4f76ad[^}]*linear-gradient\(180deg,\s*transparent\s*68%,\s*rgba\(124,\s*157,\s*207,\s*0\.18\)\s*68%\)[^}]*font-family:\s*inherit[^}]*font-weight:\s*650/s);
   assert.match(css, /conic-gradient\(from\s*-45deg,\s*#dff3ec\s*0deg\s*87deg[\s\S]*?#eee9ff\s*90deg\s*177deg[\s\S]*?#fff0df\s*180deg\s*267deg[\s\S]*?#e4edff\s*270deg\s*357deg/);
   assert.match(css, /\.fixed-base\s*{[^}]*align-items:\s*center/s);
+  assert.match(css, /\.fixed-base small\s*{[^}]*margin-top:\s*36px/s);
   assert.match(css, /\.fixed-base div\s*{[^}]*justify-content:\s*center/s);
   assert.match(packageJson, /lucide-react/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton|vinext|wrangler/);
