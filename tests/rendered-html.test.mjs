@@ -119,7 +119,8 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /\.hero h1 em\s*{[^}]*linear-gradient\([^}]*background-clip:\s*text/s);
   assert.match(css, /\.hero h1 em\s*{[^}]*padding-right:\s*0\.14em/s);
-  assert.match(css, /\.brand-scale\s*{[^}]*color:\s*var\(--blue\)/s);
+  assert.match(css, /\.brand-lockup\s*{[^}]*gap:\s*4px/s);
+  assert.match(css, /\.brand-scale\s*{[^}]*linear-gradient\(90deg,\s*var\(--blue-dark\)[^}]*background-clip:\s*text[^}]*-webkit-text-fill-color:\s*transparent/s);
   assert.match(css, /\.compact-heading,[\s\S]*?\.figure3-heading\s*{[^}]*grid-template-columns:\s*minmax\(0,\s*0\.9fr\)\s*minmax\(0,\s*1\.1fr\)/s);
   assert.match(css, /\.figure3-notes\s*{[^}]*align-content:\s*space-between/s);
   assert.match(css, /\.fixed-base\s*{[^}]*align-items:\s*center/s);

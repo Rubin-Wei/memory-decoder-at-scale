@@ -116,7 +116,7 @@ main {
 }
 
 .brand-lockup {
-  gap: 10px;
+  gap: 4px;
 }
 
 .final-memory-word {
@@ -197,7 +197,12 @@ main {
 }
 
 .brand-scale {
-  color: var(--blue);
+  display: inline-block;
+  color: var(--blue-dark);
+  background: linear-gradient(90deg, var(--blue-dark) 0%, #5f88c5 58%, #91add5 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-links {
