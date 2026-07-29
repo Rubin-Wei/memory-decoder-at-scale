@@ -112,6 +112,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(layout, /entangle long-term memory and reasoning/);
   assert.doesNotMatch(layout, /Scale knowledge without scaling the reasoning backbone/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  assert.match(css, /\.hero h1 em\s*{[^}]*linear-gradient\([^}]*background-clip:\s*text/s);
   assert.match(css, /\.fixed-base\s*{[^}]*align-items:\s*center/s);
   assert.match(css, /\.fixed-base div\s*{[^}]*justify-content:\s*center/s);
   assert.match(packageJson, /lucide-react/);
