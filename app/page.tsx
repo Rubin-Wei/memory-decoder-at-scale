@@ -60,8 +60,8 @@ export default function Home() {
 
           <div className="hero-actions">
             <a className="button primary-button" href={asset("/paper.pdf")}>Read the Paper <Arrow /></a>
-            <a className="button quiet-button" href="https://github.com/LUMIA-Group/MemoryPretrain">GitHub <Arrow /></a>
-            <a className="button quiet-button" href="https://huggingface.co/collections/Rubin-Wei/memorypretrain">Hugging Face <Arrow /></a>
+            <a className="button quiet-button" href="https://github.com/LUMIA-Group/MemoryDecoder-at-Scale">GitHub <Arrow /></a>
+            <a className="button quiet-button" href="https://huggingface.co/collections/Rubin-Wei/memorydecoder-at-scale">Hugging Face <Arrow /></a>
           </div>
 
           <p className="authors">
@@ -236,8 +236,8 @@ export default function Home() {
         <h2 id="resources-title" className="visually-hidden">Paper, code, and models</h2>
         <div className="resource-links simple-resource-links">
           <a href={asset("/paper.pdf")}><strong>Paper</strong><Arrow /></a>
-          <a href="https://github.com/LUMIA-Group/MemoryPretrain"><strong>Code</strong><Arrow /></a>
-          <a href="https://huggingface.co/collections/Rubin-Wei/memorypretrain"><strong>Models</strong><Arrow /></a>
+          <a href="https://github.com/LUMIA-Group/MemoryDecoder-at-Scale"><strong>Code</strong><Arrow /></a>
+          <a href="https://huggingface.co/collections/Rubin-Wei/memorydecoder-at-scale"><strong>Models</strong><Arrow /></a>
         </div>
       </section>
 
