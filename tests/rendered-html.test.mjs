@@ -65,7 +65,8 @@ test("exports the complete paper site for GitHub Pages", async () => {
   assert.match(html, /07 · Resources/);
   assert.doesNotMatch(html, /01 · The Idea|06 · More Results|07 · Explore/);
   assert.match(html, /General memory/);
-  assert.match(html, /href="\/memory-decoder-at-scale\/paper\.pdf"/);
+  assert.match(html, /href="https:\/\/arxiv\.org\/pdf\/2607\.27919"/);
+  assert.doesNotMatch(html, /href="\/memory-decoder-at-scale\/paper\.pdf"/);
   assert.match(html, /src="\/memory-decoder-at-scale\/paper\/overview\.png"/);
   assert.match(html, /src="\/memory-decoder-at-scale\/paper\/construction\.png"/);
   assert.match(html, /src="\/memory-decoder-at-scale\/paper\/transfer\.png"/);
@@ -103,6 +104,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(page, /SectionToc/);
   assert.match(page, /BrandLockup/);
   assert.match(page, /NEXT_PUBLIC_BASE_PATH/);
+  assert.match(page, /const paperUrl = "https:\/\/arxiv\.org\/pdf\/2607\.27919"/);
   assert.match(page, /https:\/\/github\.com\/LUMIA-Group\/MemoryDecoder-at-Scale/);
   assert.match(page, /https:\/\/huggingface\.co\/collections\/Rubin-Wei\/memorydecoder-at-scale/);
   assert.doesNotMatch(page, /LUMIA-Group\/MemoryPretrain|Rubin-Wei\/memorypretrain/);

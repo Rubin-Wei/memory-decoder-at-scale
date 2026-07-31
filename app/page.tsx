@@ -2,6 +2,7 @@ import Image from "next/image";
 import { MemoryWheel, ResultsExplorer, SectionToc } from "./interactive-paper";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const paperUrl = "https://arxiv.org/pdf/2607.27919";
 
 function asset(path: string) {
   return `${basePath}${path}`;
@@ -43,7 +44,7 @@ export default function Home() {
           <a href="#architecture">Architecture</a>
           <a href="#figure3">Scale Memory</a>
           <a href="#results">Results</a>
-          <a className="nav-paper" href={asset("/paper.pdf")}>Paper <Arrow /></a>
+          <a className="nav-paper" href={paperUrl}>Paper <Arrow /></a>
         </div>
       </nav>
 
@@ -59,7 +60,7 @@ export default function Home() {
           </p>
 
           <div className="hero-actions">
-            <a className="button primary-button" href={asset("/paper.pdf")}>Read the Paper <Arrow /></a>
+            <a className="button primary-button" href={paperUrl}>Read the Paper <Arrow /></a>
             <a className="button quiet-button" href="https://github.com/LUMIA-Group/MemoryDecoder-at-Scale">GitHub <Arrow /></a>
             <a className="button quiet-button" href="https://huggingface.co/collections/Rubin-Wei/memorydecoder-at-scale">Hugging Face <Arrow /></a>
           </div>
@@ -235,7 +236,7 @@ export default function Home() {
         <div className="section-label">07 · Resources</div>
         <h2 id="resources-title" className="visually-hidden">Paper, code, and models</h2>
         <div className="resource-links simple-resource-links">
-          <a href={asset("/paper.pdf")}><strong>Paper</strong><Arrow /></a>
+          <a href={paperUrl}><strong>Paper</strong><Arrow /></a>
           <a href="https://github.com/LUMIA-Group/MemoryDecoder-at-Scale"><strong>Code</strong><Arrow /></a>
           <a href="https://huggingface.co/collections/Rubin-Wei/memorydecoder-at-scale"><strong>Models</strong><Arrow /></a>
         </div>
