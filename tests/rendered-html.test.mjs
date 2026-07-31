@@ -63,6 +63,12 @@ test("exports the complete paper site for GitHub Pages", async () => {
   assert.match(html, /01 · Core Idea/);
   assert.match(html, /06 · Results/);
   assert.match(html, /07 · Resources/);
+  assert.match(html, /08 · Citation/);
+  assert.match(html, /Cite this work\./);
+  assert.match(html, /wei2026memorydecoderscalepretrained/);
+  assert.match(html, /eprint=\{2607\.27919\}/);
+  assert.match(html, /Copy BibTeX/);
+  assert.match(html, /https:\/\/arxiv\.org\/abs\/2607\.27919/);
   assert.doesNotMatch(html, /01 · The Idea|06 · More Results|07 · Explore/);
   assert.match(html, /General memory/);
   assert.match(html, /href="https:\/\/arxiv\.org\/pdf\/2607\.27919"/);
@@ -103,6 +109,7 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(page, /MemoryWheel/);
   assert.match(page, /SectionToc/);
   assert.match(page, /BrandLockup/);
+  assert.match(page, /CitationBlock/);
   assert.match(page, /NEXT_PUBLIC_BASE_PATH/);
   assert.match(page, /const paperUrl = "https:\/\/arxiv\.org\/pdf\/2607\.27919"/);
   assert.match(page, /https:\/\/github\.com\/LUMIA-Group\/MemoryDecoder-at-Scale/);
@@ -138,6 +145,9 @@ test("keeps interactive source and the paper assets", async () => {
   assert.match(interactive, /Core Idea/);
   assert.match(interactive, /label:\s*"Results"/);
   assert.match(interactive, /label:\s*"Resources"/);
+  assert.match(interactive, /label:\s*"Citation"/);
+  assert.match(interactive, /navigator\.clipboard\.writeText\(citationBibtex\)/);
+  assert.match(interactive, /primaryClass=\{cs\.CL\}/);
   assert.doesNotMatch(interactive, /The Idea|More Results|label:\s*"Explore"/);
   assert.match(interactive, /Swap Memory/);
   assert.match(interactive, /Data Construction/);

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MemoryWheel, ResultsExplorer, SectionToc } from "./interactive-paper";
+import { CitationBlock, MemoryWheel, ResultsExplorer, SectionToc } from "./interactive-paper";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const paperUrl = "https://arxiv.org/pdf/2607.27919";
@@ -240,6 +240,15 @@ export default function Home() {
           <a href="https://github.com/LUMIA-Group/MemoryDecoder-at-Scale"><strong>Code</strong><Arrow /></a>
           <a href="https://huggingface.co/collections/Rubin-Wei/memorydecoder-at-scale"><strong>Models</strong><Arrow /></a>
         </div>
+      </section>
+
+      <section className="citation-section section-shell" id="citation" aria-labelledby="citation-title">
+        <div className="section-label">08 · Citation</div>
+        <div className="citation-heading">
+          <h2 id="citation-title">Cite this work.</h2>
+          <p>If Memory Decoder at Scale supports your research, please use the following BibTeX entry.</p>
+        </div>
+        <CitationBlock />
       </section>
 
       <footer>

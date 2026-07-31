@@ -12,6 +12,7 @@ const tocItems = [
   { id: "figure3", number: "05", label: "Scale Memory" },
   { id: "results", number: "06", label: "Results" },
   { id: "resources", number: "07", label: "Resources" },
+  { id: "citation", number: "08", label: "Citation" },
 ];
 
 export function SectionToc() {
@@ -284,6 +285,42 @@ export function ResultsExplorer() {
       </div>
       <div className="chart-axis" aria-hidden="true"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
       <p className="chart-note">{view === "general" ? "Average across 17 diverse benchmarks with matched-size memory." : "Average across biology, law, and finance with a 1.7B domain memory."}</p>
+    </div>
+  );
+}
+
+const citationBibtex = `@misc{wei2026memorydecoderscalepretrained,
+      title={Memory Decoder at Scale: A Pretrained, Parametric Long-Term Memory},
+      author={Rubin Wei and Jiaqi Cao and Jiarui Wang and Junming Zhang and Qipeng Guo and Bowen Zhou and Zhouhan Lin},
+      year={2026},
+      eprint={2607.27919},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2607.27919},
+}`;
+
+export function CitationBlock() {
+  const [copied, setCopied] = useState(false);
+
+  async function copyCitation() {
+    try {
+      await navigator.clipboard.writeText(citationBibtex);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopied(false);
+    }
+  }
+
+  return (
+    <div className="citation-card">
+      <div className="citation-card-header">
+        <a href="https://arxiv.org/abs/2607.27919">arXiv:2607.27919 ↗</a>
+        <button type="button" onClick={copyCitation} aria-live="polite">
+          {copied ? "Copied ✓" : "Copy BibTeX"}
+        </button>
+      </div>
+      <pre><code>{citationBibtex}</code></pre>
     </div>
   );
 }
